@@ -1,0 +1,53 @@
+{% include footer.html %}
+
+
+</div>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script type="text/javascript">
+  // var percent_update = function () {
+  //   document.getElementById("percent_value").innerHTML = this.value;
+  //   console.log(this.value);
+  // };
+
+  // document.getElementById("percent").onchange = percent_update;
+  // document.getElementById("percent").oninput = percent_update;
+
+  var clipboard = new Clipboard('.clipboard-btn');
+  clipboard.on('success', function (e) {
+    var classArray = e.trigger.className.split(' ');
+    classArray.splice(classArray.indexOf('blue'), 1);
+    classArray.push('green');
+    e.trigger.className = classArray.join(' ');
+    e.trigger.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i> Copied';
+
+    window.setTimeout(function () {
+      var classArray = e.trigger.className.split(' ');
+      classArray.splice(classArray.indexOf('green'), 1);
+      classArray.push('blue');
+      e.trigger.className = classArray.join(' ');
+      e.trigger.innerHTML = '<i class="fa fa-clipboard" aria-hidden="true"></i>';
+    }, 2000);
+  });
+
+  clipboard.on('error', function (e) {
+    var classArray = e.trigger.className.split(' ');
+    classArray.splice(classArray.indexOf('blue'), 1);
+    classArray.push('red');
+    e.trigger.className = classArray.join(' ');
+    e.trigger.innerHTML = '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error';
+
+    window.setTimeout(function () {
+      var classArray = e.trigger.className.split(' ');
+      classArray.splice(classArray.indexOf('red'), 1);
+      classArray.push('blue');
+      e.trigger.className = classArray.join(' ');
+      e.trigger.innerHTML = '<i class="fa fa-clipboard" aria-hidden="true"></i>';
+    }, 2000);
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+</body>
+
+</html>

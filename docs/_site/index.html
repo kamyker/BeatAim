@@ -1,0 +1,294 @@
+<!-- Modifications copyright (C) 2019 Kamil Szurant -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>BeatAim - rhythm game designed for FPS players with ai generated maps</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="BeatAim - rhythm game designed for FPS players with ai generated maps">
+  <meta name="keywords" content="beat,aim,beataim,shooter,trainer,practice,rhythm,3d,ai,kamyker">
+  <meta name="author" content="Kamil Szurant">
+  <meta property="og:title" content="BeatAim">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://beataim.com/meta-image.jpg">
+  <meta property="og:url" content="https://beataim.com">
+  <meta property="og:description" content="Rhythm game designed for FPS players with ai generated maps">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@beat_aim">
+  <meta name="twitter:creator" content="@kamyker">
+  <meta name="twitter:title" content="BeatAim">
+  <meta name="twitter:description" content="Rhythm game designed for FPS players with ai generated maps">
+  <meta name="twitter:image" content="https://beataim.com/meta-image.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- DEVELOPMENT FILES
+  <link rel="stylesheet" type="text/css" href="../dist/css/meshki.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/plugins/meshki-extra-button-colors.min.css">
+  <script type="text/javascript" src="../dist/js/meshki.min.js"></script>
+  DEVELOPMENT FILES -->
+  <!-- PRODUCTION FILES -->
+  <link rel="stylesheet" type="text/css" href="cdn/meshki.min.css">
+  <link rel="stylesheet" type="text/css" href="cdn/meshki-extra-button-colors.min.css">
+  <script type="text/javascript" src="cdn/meshki.min.js"></script>
+  <!-- PRODUCTION FILES -->
+  <link rel="stylesheet" type="text/css" href="custom.css">
+  <link rel="stylesheet" type="text/css" href="cdn/font-awesome.min.css">
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="cdn/prism.min.css">
+  <link rel="stylesheet" href="cdn/prism-okaidia.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+</head>
+
+<body class="">
+
+  <div class="sidenav push">
+  <a href="javascript:void(0);" class="sidenav-close-button" onclick="meshki.closeSidenav()">&times;</a>
+  <a href="">Home</a>
+  <a href="https://discord.gg/2kW27Ez">Discord</a>
+  <a href="https://twitter.com/beat_aim">Twitter</a>
+  <a href="https://www.facebook.com/BeatAim/">Facebook</a>
+  <!-- <hr class="hide-on-non-mobile"> -->
+  <!-- <div class="hide-on-non-mobile">
+    <a href="#buttons-doc" onclick="meshki.closeSidenav()">Buttons</a>
+    <a href="#sidenav-doc" onclick="meshki.closeSidenav()">Sidenav</a>
+    <a href="#navbar-doc" onclick="meshki.closeSidenav()">Navbar</a>
+    <a href="#grid-doc" onclick="meshki.closeSidenav()">Grid System</a>
+    <a href="#form-doc" onclick="meshki.closeSidenav()">Forms</a>
+    <a href="#typography-doc" onclick="meshki.closeSidenav()">Typography</a>
+    <a href="#tables-doc" onclick="meshki.closeSidenav()">Tables</a>
+    <a href="#footer-doc" onclick="meshki.closeSidenav()">Footer</a>
+  </div> -->
+  <hr>
+  <!-- <button onclick="location.href='https://twitter.com/Meshki_UI'" class="button blue medium"><b></b><i class="fa fa-twitter" aria-hidden="true"></i></button>
+  <button onclick="location.href='https://www.npmjs.com/package/meshki'" class="button red medium"><b>npm</b></button>
+  <button onclick="location.href='https://github.com/Borderliner/Meshki'" class="button medium"><b></b><i class="fa fa-github" aria-hidden="true"></i></button> -->
+  <a href="javascript:void(0)" disabled style="font-size: 1.5rem">Share on:</a>
+  <div class="share-links">
+    <a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=http://beataim.com/" target="_blank"><i
+        class="fa fa-facebook-square" aria-hidden="true"></i></a>
+    <a class="tw-share" href="https://twitter.com/home?status=http://beataim.com/" target="_blank"><i
+        class="fa fa-twitter-square" aria-hidden="true"></i></a>
+    <a class="gp-share" href="https://plus.google.com/share?url=http://beataim.com/" target="_blank"><i
+        class="fa fa-google-plus-square" aria-hidden="true"></i></a>
+  </div>
+</div>
+
+  <div class="container">
+
+    <div class="nav fixed">
+  <ul>
+    <li><a class="logo" href="javascript:void(0);" onclick="meshki.openSidenav()"><i class="fa fa-bars"
+          aria-hidden="true"></i>BeatAim</a></li>
+    <!-- <li class="nav-dropdown hide-on-mobile">
+          <a href="javascript:void(0)" class="nav-dropdown-button">Plugins</a>
+          <div class="nav-dropdown-content">
+            <a href="rtl/">RTL Mode (Persian)</a>
+            <a href="#extra-button-colors">Extra Button Colors</a>
+          </div>
+        </li> -->
+    <!-- <li><a href="https://github.com/Borderliner/Meshki/blob/master/CHANGELOG.md">News</a></li>
+        <li><a href="https://github.com/Borderliner/Meshki">GitHub</a></li> -->
+    <!-- <li class="nav-dropdown hide-on-mobile">
+          <a href="javascript:void(0)" class="nav-dropdown-button">Components</a>
+          <div class="nav-dropdown-content">
+            <a href="#buttons-doc">Buttons</a>
+            <a href="#sidenav-doc">Sidenav</a>
+            <a href="#navbar-doc">Navbar</a>
+            <a href="#grid-doc">Grid System</a>
+            <a href="#form-doc">Forms</a>
+            <a href="#typography-doc">Typography</a>
+            <a href="#tables-doc">Tables</a>
+            <a href="#footer-doc">Footer</a>
+          </div>
+        </li> -->
+
+    <li class="nav-right">
+      <a href="https://discord.gg/2kW27Ez" target="_blank">
+        <img src="imgs/discord.png" alt="discord" width="48px" height="48px">
+      </a>
+      <a href="https://twitter.com/beat_aim" target="_blank">
+        <img src="imgs/twitter.png" alt="twitter" width="44px" height="44px">
+      </a>
+      <a href="https://www.facebook.com/BeatAim/" target="_blank">
+        <img src="imgs/fb.png" alt="facebook" width="44px" height="44px">
+      </a>
+    </li>
+
+    <!-- <li class="nav-right hide-on-tablet">
+          <script type="text/javascript" src="finder.js"></script>
+          <input type="text" name="searchbox" id="searchbox" placeholder="Search..."
+            onkeydown="meshkiUtil.search(this)">
+        </li>
+        <li class="nav-right hide-on-tablet"><button class="green" onclick="meshkiUtil.search(true)"><i
+              class="fa fa-search" aria-hidden="true"></i></button></li> -->
+  </ul>
+</div>
+
+    <div class="content">
+
+<div class="iframe-container">
+  <iframe src="https://www.youtube.com/embed/XgwgG53RmuE?autoplay=1" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<div class="humblewidget-conteiner">
+  <iframe src="https://www.humblebundle.com/widget/v2/product/beataim_widget/MqcoxSycVm?theme=light"
+    style="border: none;" scrolling="no" frameborder="0"></iframe>
+</div>
+
+<div class="row text-center">
+  <h5>Available now on Windows</h5>
+</div>
+
+<div class="row has-bg text-center grey-bg">
+  <div class="four col">
+    <img src="imgs/crown.png" alt="premium">
+    <br><br>
+    <span>Includes 2 months premium<br>
+      (10$ value)</span>
+  </div>
+  <div class="four col">
+    <img src="imgs/calendar.png" alt="calendar">
+    <br><br>
+    <span>Grants access to alpha, beta and<br>
+      all future releases</span>
+  </div>
+  <div class="four col">
+    <a href="https://discord.gg/2kW27Ez target=" _blank"">
+      <img src="imgs/discord.png" alt="discord" width="128px" height="128px">
+    </a>
+    <br><br>
+    <span>Priority support and founder<br>
+      role on <a href="https://discord.gg/2kW27Ez target=" _blank"">Discord</a></span>
+  </div>
+</div>
+
+<div class="row centerize">
+  <div class="twelve">
+    <img class="responsive" src="imgs/beataim.jpg" alt="beataim">
+  </div>
+</div>
+
+<div class="row centerize text-center grey-bg">
+  <div class="twelve outer">
+    <div class="three col">
+      <img class="responsive" src="imgs/kamyker.jpg" alt="beataim">
+      <br>
+      <p class="smaller-text">Developed by just one <a href="https://twitter.com/kamyker">gamer</a></p>
+    </div>
+    <div class="nine col inner_remaining" style="margin: auto;">
+      <p>
+        As an esports player I've been looking for a way to get my aiming skills to the highest levels.
+        FPS trainers like Kovaak's are pretty good but quickly become boring.
+        2d games like osu! are amazing but unfortunately 3d-aiming works diffrently.
+        BeatAim has been developed over last 2-3 years in my free time.
+        After testing many solutions I've finally found a perfect recipe.
+        Not only it will be possible to open any music but also deeply customize map generation.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="three col feature-block" style="font-size: 36px">
+    <p class="cinzel">
+      <span style="line-height: 0;">osu!<br>
+        <span style="font-size: 2rem;">x</span>
+        <br>
+        Kovaak's
+        Trainer
+    </p>
+    <br></span>
+    <p class="smaller-text bottom-text">Rhythm game not seen before</p>
+  </div>
+  <div class="three col feature-block" style="font-size: 44px">
+    <p class="cinzel">Infinite<br>Content
+    </p>
+    <br>
+    <p class="smaller-text bottom-text">Soon players will be able
+      to open any music in game</p>
+  </div>
+  <div class="three col feature-block" style="font-size: 34px">
+    <p class="cinzel">Ai<br>generated<br>maps
+    </p>
+    <br>
+    <p class="smaller-text bottom-text">Unlimited replayability</p>
+  </div>
+  <div class="three col feature-block" style="font-size: 34px">
+    <p class="cinzel">
+      Quality<br>over<br>Quantity
+    </p>
+    <br>
+    <p class="smaller-text bottom-text">I hate bugs, I can update game daily
+      instead of weakly/monthly like big companies</p>
+  </div>
+</div>
+
+<div class="footer " style="font-size: 10px">
+  <div class="row text-center">
+    <div class=" six col ">
+      <span>Created using Meshki by <a href=" https://github.com/Borderliner" target="_blank">Borderliner </a>
+      </span> </div>
+    <div class="six col">
+      <span>Few icons by <a href="http://www.freepik.com/" target="_blank">Freepik</a> from <a
+          href="http://www.flaticon.com/" target="_blank">www.flaticon.com </a></span>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script type="text/javascript">
+  // var percent_update = function () {
+  //   document.getElementById("percent_value").innerHTML = this.value;
+  //   console.log(this.value);
+  // };
+
+  // document.getElementById("percent").onchange = percent_update;
+  // document.getElementById("percent").oninput = percent_update;
+
+  var clipboard = new Clipboard('.clipboard-btn');
+  clipboard.on('success', function (e) {
+    var classArray = e.trigger.className.split(' ');
+    classArray.splice(classArray.indexOf('blue'), 1);
+    classArray.push('green');
+    e.trigger.className = classArray.join(' ');
+    e.trigger.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i> Copied';
+
+    window.setTimeout(function () {
+      var classArray = e.trigger.className.split(' ');
+      classArray.splice(classArray.indexOf('green'), 1);
+      classArray.push('blue');
+      e.trigger.className = classArray.join(' ');
+      e.trigger.innerHTML = '<i class="fa fa-clipboard" aria-hidden="true"></i>';
+    }, 2000);
+  });
+
+  clipboard.on('error', function (e) {
+    var classArray = e.trigger.className.split(' ');
+    classArray.splice(classArray.indexOf('blue'), 1);
+    classArray.push('red');
+    e.trigger.className = classArray.join(' ');
+    e.trigger.innerHTML = '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error';
+
+    window.setTimeout(function () {
+      var classArray = e.trigger.className.split(' ');
+      classArray.splice(classArray.indexOf('red'), 1);
+      classArray.push('blue');
+      e.trigger.className = classArray.join(' ');
+      e.trigger.innerHTML = '<i class="fa fa-clipboard" aria-hidden="true"></i>';
+    }, 2000);
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+</body>
+
+</html>
