@@ -103,13 +103,19 @@ div.share-links i.fa {
   100% { opacity: .5; }
 }
 
+.iframe-container-discord {
+  overflow: hidden;
+  padding-top: 122%;
+  position: relative;
+}
+
 .iframe-container {
   overflow: hidden;
   padding-top: 56.25%;
   position: relative;
 }
  
-.iframe-container iframe {
+.iframe-container iframe, .iframe-container-discord iframe {
    border: 0;
    height: 100%;
    left: 0;
@@ -122,7 +128,7 @@ div.share-links i.fa {
   height: 275px;
 }
 
-.humblewidget-conteiner iframe{
+.humblewidget-conteiner  iframe{
   border: 0;
   height: 100%;
   left: 0;
@@ -162,6 +168,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
+  background-color: #111;
   font-size: 1.5rem;
   font-family: 'Muli', Helvetica, Arial, sans-serif;
 }
@@ -209,6 +216,14 @@ blockquote, dl, figure, table, p, ul, ol, form {
   right:0;
   left: 0;
   bottom: 1px;
+}
+
+.no-padding {
+  padding: 0px;
+}
+
+.no-margin {
+  margin: 0px;
 }
 
 footer, .footer {
