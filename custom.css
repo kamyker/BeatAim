@@ -125,7 +125,7 @@ div.share-links i.fa {
 }
 
 .humblewidget-conteiner{
-  height: 275px;
+  height: 286px;
 }
 
 .humblewidget-conteiner  iframe{
@@ -134,6 +134,20 @@ div.share-links i.fa {
   left: 0;
   top: 0;
   width: 100%;
+  border: none;
+}
+
+.humblewidget-conteiner-tip{
+  height: 400px;
+}
+
+.humblewidget-conteiner-tip  iframe{
+  border: 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border: none;
 }
 
 @media (max-width: 636px) {
