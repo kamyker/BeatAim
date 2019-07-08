@@ -44,7 +44,7 @@ var RegisterCallback = function (result, error) {
 
 var MailSentCallback = function (result, error) {
     if (result !== null) {
-        document.getElementById("resultOutput").innerHTML = "Confirmation mail to sent to " + userEmail + ".<br>Set up your password there.<br>Then redeem your alpha key <a href=\"redeem-key.html\">here</a>";
+        document.getElementById("resultOutput").innerHTML = "Confirmation mail to sent to " + userEmail + "<br>Set up your password there<br>If you bought the game redeem your alpha key <a href=\"redeem-key.html\">here</a>";
     } else if (error !== null) {
         document.getElementById("resultOutput").innerHTML =
             "Error:\n" +
