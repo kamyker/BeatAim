@@ -93,7 +93,7 @@ function RedeemAlpha() {
 
         actionAfterReferral = function () {
             PlayFabClientSDK.ExecuteCloudScript({
-                FunctionName: "WebsiteRedeemAlpha",
+                FunctionName: "WebsiteRedeemAlphaV2",
                 FunctionParameter: {
                     key: key,
                     referralPlayFabId: referralPlayFabId
@@ -154,7 +154,7 @@ function ExtendVip() {
 
         actionAfterReferral = function () {
             PlayFabClientSDK.ExecuteCloudScript({
-                FunctionName: "WebsiteExtendVip",
+                FunctionName: "WebsiteExtendVipV2",
                 FunctionParameter: {
                     key: key,
                     referralPlayFabId: referralPlayFabId
