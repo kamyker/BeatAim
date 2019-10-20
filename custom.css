@@ -52,7 +52,7 @@ div.share-links i.fa {
 }
 
 .content {
-  padding-top: 70px;
+  padding-top: 140px;
 }
 
 .grid-table div div {
@@ -124,6 +124,34 @@ div.share-links i.fa {
    width: 100%;
 }
 
+@media (min-width: 200px) {
+    .content {
+        width: 95%
+    }
+}
+@media (min-width: 700px) {
+    .content {
+        width:80%
+    }
+}
+
+footer, .footer {
+    position: fixed;
+    bottom: 0;
+}
+
+.steamwidget-conteiner{
+  height: 190px;
+}
+.steamwidget-conteiner  iframe{
+  border: 0;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  border: none;
+}
+
 .humblewidget-conteiner{
   height: 286px;
 }
@@ -150,7 +178,7 @@ div.share-links i.fa {
   border: none;
 }
 
-@media (max-width: 636px) {
+@media (max-width: 496px) {
   .humblewidget-conteiner{
     height: 170px;
   }
