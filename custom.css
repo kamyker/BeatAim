@@ -53,6 +53,7 @@ div.share-links i.fa {
 
 .content {
   padding-top: 140px;
+  padding-bottom: 70px;
 }
 
 .grid-table div div {
@@ -135,10 +136,6 @@ div.share-links i.fa {
     }
 }
 
-footer, .footer {
-    position: fixed;
-    bottom: 0;
-}
 
 .steamwidget-conteiner{
   height: 190px;
