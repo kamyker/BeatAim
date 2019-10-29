@@ -162,7 +162,7 @@
     // }
     const userAction = async () => {
         const response = await fetch(
-            'https://beataimtest.herokuapp.com/api/tournaments/getweeklyresults');
+            'https://beataim.herokuapp.com/api/tournaments/getweeklyresults');
         //["jwun","XVoIR","Brumor","Drimzi","kamyker2","Saotic","Bloodyjesse"]
         const topPlayers = await response.json();
         var htmlString = '<h4 style="word-spacing: 30px; border-width: 2px;border-style: outset; padding: 10px">';
