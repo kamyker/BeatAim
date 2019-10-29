@@ -1,0 +1,270 @@
+<!-- Modifications copyright (C) 2019 Kamil Szurant -->
+
+<!DOCTYPE html>
+<html lang = "en">
+
+<head>
+    <title>BeatAim - rhythm game designed for FPS players with ai generated maps</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="BeatAim - rhythm game designed for FPS players with ai generated maps">
+    <meta name="keywords" content="beat,aim,beataim,shooter,trainer,practice,rhythm,3d,ai,kamyker">
+    <meta name="author" content="Kamil Szurant">
+    <meta property="og:title" content="BeatAim">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://beataim.com/meta-image.jpg">
+    <meta property="og:url" content="https://beataim.com">
+    <meta property="og:description" content="Rhythm game designed for FPS players with ai generated maps">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@beat_aim">
+    <meta name="twitter:creator" content="@kamyker">
+    <meta name="twitter:title" content="BeatAim">
+    <meta name="twitter:description" content="Rhythm game designed for FPS players with ai generated maps">
+    <meta name="twitter:image" content="https://beataim.com/meta-image.jpg">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <!-- DEVELOPMENT FILES
+  <link rel="stylesheet" type="text/css" href="../dist/css/meshki.min.css">
+  <link rel="stylesheet" type="text/css" href="../dist/plugins/meshki-extra-button-colors.min.css">
+  <script type="text/javascript" src="../dist/js/meshki.min.js"></script>
+  DEVELOPMENT FILES -->
+    <!-- PRODUCTION FILES -->
+    <link rel="stylesheet" type="text/css" href="cdn/meshki.min.css">
+    <link rel="stylesheet" type="text/css" href="cdn/meshki-extra-button-colors.min.css">
+    <script type="text/javascript" src="cdn/meshki.min.js"></script>
+    <!-- PRODUCTION FILES -->
+    <link rel="stylesheet" type="text/css" href="custom.css">
+    <link rel="stylesheet" type="text/css" href="cdn/font-awesome.min.css">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="cdn/prism.min.css">
+    <link rel="stylesheet" href="cdn/prism-okaidia.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="PlayFabClientApi.js"></script>
+    <script type="text/javascript" src="PlayFabCustom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.3.0/json2html.min.js"></script>
+</head>
+
+<body class="">
+
+  <div class="sidenav push">
+    <a href="javascript:void(0);" class="sidenav-close-button" onclick="meshki.closeSidenav()">&times;</a>
+    <a href="index.html">Home</a>
+    <div class="hide-on-mobile">
+        <a href="https://discord.gg/2kW27Ez">Discord</a>
+        <a href="https://twitter.com/beat_aim">Twitter</a>
+        <a href="https://www.facebook.com/BeatAim/">Facebook</a>
+    </div>
+    <!-- <hr class="hide-on-non-mobile"> -->
+    <div class="hide-on-non-mobile">
+        <a href="news.html" onclick="meshki.closeSidenav()">News</a>
+        <a href="make-account.html" onclick="meshki.closeSidenav()">Alpha sign up</a>
+        <!-- <a href="tournaments.html" onclick="meshki.closeSidenav()">F2P Tournaments</a> -->
+        <a href="redeem-key.html" onclick="meshki.closeSidenav()">Redeem alpha key</a>
+        <a href="extend-vip.html" onclick="meshki.closeSidenav()">Extend VIP</a>
+        <a href="referral.html">Referrals</a>
+    </div>
+    <hr>
+    <!-- <button onclick="location.href='https://twitter.com/Meshki_UI'" class="button blue medium"><b></b><i class="fa fa-twitter" aria-hidden="true"></i></button>
+  <button onclick="location.href='https://www.npmjs.com/package/meshki'" class="button red medium"><b>npm</b></button>
+  <button onclick="location.href='https://github.com/Borderliner/Meshki'" class="button medium"><b></b><i class="fa fa-github" aria-hidden="true"></i></button> -->
+    <a href="javascript:void(0)" disabled style="font-size: 1.5rem">Share on:</a>
+    <div class="share-links">
+        <a class="fb-share" href="https://www.facebook.com/sharer/sharer.php?u=http://beataim.com/" target="_blank"><i
+                class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        <a class="tw-share" href="https://twitter.com/home?status=http://beataim.com/" target="_blank"><i
+                class="fa fa-twitter-square" aria-hidden="true"></i></a>
+        <a class="gp-share" href="https://plus.google.com/share?url=http://beataim.com/" target="_blank"><i
+                class="fa fa-google-plus-square" aria-hidden="true"></i></a>
+    </div>
+</div>
+
+  <div class="container">
+
+    <div class="nav fixed">
+    <ul>
+        <li><a class="logo" href="javascript:void(0);" onclick="meshki.openSidenav()"><i class="fa fa-bars"
+                    aria-hidden="true"></i>BeatAim</a></li>
+        <!-- <li class="nav-dropdown hide-on-mobile">
+          <a href="javascript:void(0)" class="nav-dropdown-button">Plugins</a>
+          <div class="nav-dropdown-content">
+            <a href="rtl/">RTL Mode (Persian)</a>
+            <a href="#extra-button-colors">Extra Button Colors</a>
+          </div>
+        </li> -->
+        <div class="hide-on-mobile">
+            <li><a href="news.html">News</a></li>
+            <li><a href="make-account.html">Alpha sign up</a></li>
+            <!-- <li><a href="tournaments.html">F2P Tournaments</a></li> -->
+            <li><a href="redeem-key.html">Redeem alpha key</a></li>
+            <li><a href="extend-vip.html">Extend VIP</a></li>
+            <li><a href="referral.html">Referrals</a></li>
+        </div>
+        <!-- <li><a href="https://github.com/Borderliner/Meshki/blob/master/CHANGELOG.md">News</a></li>
+        <li><a href="https://github.com/Borderliner/Meshki">GitHub</a></li> -->
+        <!-- <li class="nav-dropdown hide-on-mobile">
+          <a href="javascript:void(0)" class="nav-dropdown-button">Components</a>
+          <div class="nav-dropdown-content">
+            <a href="#buttons-doc">Buttons</a>
+            <a href="#sidenav-doc">Sidenav</a>
+            <a href="#navbar-doc">Navbar</a>
+            <a href="#grid-doc">Grid System</a>
+            <a href="#form-doc">Forms</a>
+            <a href="#typography-doc">Typography</a>
+            <a href="#tables-doc">Tables</a>
+            <a href="#footer-doc">Footer</a>
+          </div>
+        </li> -->
+
+        <li class="nav-right">
+            <a href="https://store.steampowered.com/app/1142220/BeatAim__Rhythm_Shooter/" target="_blank"
+                style="padding: 0px 10px">
+                <img src="imgs/steamearly.png" alt="BeatAimSteam" width="87px" height="34px">
+            </a>
+            <a href="https://discord.gg/2kW27Ez" target="_blank" style="padding: 0px 10px">
+                <img src="imgs/discord.png" alt="discord" width="38px" height="38px">
+            </a>
+            <a href="https://twitter.com/beat_aim" target="_blank" style="padding: 0px 10px">
+                <img src="imgs/twitter.png" alt="twitter" width="34px" height="34px">
+            </a>
+            <a href="https://www.facebook.com/BeatAim/" target="_blank" style="padding: 0px 10px">
+                <img src="imgs/fb.png" alt="facebook" width="34px" height="34px">
+            </a>
+        </li>
+
+        <!-- <li class="nav-right hide-on-tablet">
+          <script type="text/javascript" src="finder.js"></script>
+          <input type="text" name="searchbox" id="searchbox" placeholder="Search..."
+            onkeydown="meshkiUtil.search(this)">
+        </li>
+        <li class="nav-right hide-on-tablet"><button class="green" onclick="meshkiUtil.search(true)"><i
+              class="fa fa-search" aria-hidden="true"></i></button></li> -->
+    </ul>
+</div>
+
+    <div class="content">
+<div class="row text-center">
+    <h1>Top players</h1>
+</div>
+<br>
+
+
+<!-- <a class="twitter-timeline" data-height="1200" data-theme="dark"
+    href="https://twitter.com/beat_aim?ref_src=twsrc%5Etfw">Tweets by beat_aim</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> -->
+
+<script type="text/javascript">
+    let template = { '<>': 'div', 'html': '<h4><a href="${url}" target="_blank"> ${title}</a><h4><p>${contents}</p>' };
+    function escapeRegExp(text) {
+        return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    }
+    String.prototype.replaceAll = function (search, replacement) {
+        var target = this;
+        return target.replace(new RegExp(escapeRegExp(search), 'g'), replacement);
+    };
+
+    const userAction = async () => {
+        const response = await fetch('https://beataimtest.herokuapp.com/api/tournaments/getweeklyresults');
+        //["jwun","XVoIR","Brumor","Drimzi","kamyker2","Saotic","Bloodyjesse"]
+        const myJson = await response.json();
+        myJson.forEach(element => {
+            console.log(element)
+        });
+        data = myJson;
+        var div = document.createElement("div");
+        // var htmlString = json2html.transform(data, template);
+        // var ytRegex = /(https:\/\/www\.|https:\/\/)(youtube|youtu)\.(com(\/watch\?v=(...........))|be(\/)(...........))/;
+        // var match = ytRegex.exec(htmlString);
+        // while (match != null) {
+        //     var ytId = match[5];
+        //     htmlString = htmlString.replace(match[0], '<div class="iframe-container"><iframe src="https://www.youtube.com/embed/' + ytId + '" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
+        //     match = ytRegex.exec(htmlString);
+        // }
+        // htmlString = htmlString
+        //     .replaceAll("\n", "<br>")
+        //     .replaceAll("[h1]", "<h5>")
+        //     .replaceAll("[/h1]", "</h5>")
+        //     .replaceAll("[img]", '<img class="responsive" src=')
+        //     .replaceAll("[url=", "<a href=")
+        //     .replaceAll("[/url]", "</a>")
+        //     .replaceAll("[/img]", ">")
+        //     .replaceAll("list", "ul")
+        //     .replaceAll("[*]", "</li><li>")
+        //     .replaceAll("[", "<")
+        //     .replaceAll("]", ">");
+        // div.innerHTML = htmlString;
+
+        document.getElementsByClassName("content")[0].appendChild(div);
+    }
+
+    userAction();
+
+</script>
+<!-- <div class="iframe-container-discord">
+  <iframe src="https://discordapp.com/widget?id=328527053634928651&theme=dark" allowtransparency="true" width="350"
+    frameborder="0"></iframe>
+</div> -->
+
+</div>
+<div class="footer " style="font-size: 10px">
+  <div class="row text-center">
+    <div class=" six col ">
+      <span>Created using Meshki by <a href=" https://github.com/Borderliner" target="_blank">Borderliner </a>
+      </span> </div>
+    <div class="six col">
+      <span>Few icons by <a href="http://www.freepik.com/" target="_blank">Freepik</a> from <a
+          href="http://www.flaticon.com/" target="_blank">www.flaticon.com </a></span>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script type="text/javascript">
+  // var percent_update = function () {
+  //   document.getElementById("percent_value").innerHTML = this.value;
+  //   console.log(this.value);
+  // };
+
+  // document.getElementById("percent").onchange = percent_update;
+  // document.getElementById("percent").oninput = percent_update;
+
+  var clipboard = new Clipboard('.clipboard-btn');
+  clipboard.on('success', function (e) {
+    var classArray = e.trigger.className.split(' ');
+    classArray.splice(classArray.indexOf('blue'), 1);
+    classArray.push('green');
+    e.trigger.className = classArray.join(' ');
+    e.trigger.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i> Copied';
+
+    window.setTimeout(function () {
+      var classArray = e.trigger.className.split(' ');
+      classArray.splice(classArray.indexOf('green'), 1);
+      classArray.push('blue');
+      e.trigger.className = classArray.join(' ');
+      e.trigger.innerHTML = '<i class="fa fa-clipboard" aria-hidden="true"></i>';
+    }, 2000);
+  });
+
+  clipboard.on('error', function (e) {
+    var classArray = e.trigger.className.split(' ');
+    classArray.splice(classArray.indexOf('blue'), 1);
+    classArray.push('red');
+    e.trigger.className = classArray.join(' ');
+    e.trigger.innerHTML = '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Error';
+
+    window.setTimeout(function () {
+      var classArray = e.trigger.className.split(' ');
+      classArray.splice(classArray.indexOf('red'), 1);
+      classArray.push('blue');
+      e.trigger.className = classArray.join(' ');
+      e.trigger.innerHTML = '<i class="fa fa-clipboard" aria-hidden="true"></i>';
+    }, 2000);
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+</body>
+
+</html>
