@@ -2,7 +2,7 @@
 https://BeatAim.com
 
 Hey, this is our website but also a place to let you and the whole community to change and improve the game. Currently available used files that can be modified:
-- [Difficulty settings for all of the songs in the game](./gameDevBranch/SongsBalance.csv)
+- [Difficulty settings for all of the songs in the game](./gameDevBranch/SongsBalance.csv) - slightly easier to edit version is available on [google.com/spreadsheets](https://docs.google.com/spreadsheets/d/1-xiFWjoz_gJpaMbiVgTNn0hJUg151I3ph4QplFCayUo/edit?usp=sharing) comments are enabled
 
 # Development of BeatAim
 The game was created by only one person ([Kamyker](https://twitter.com/kamyker)). That's why I invite everyone to help me. The most active users will be granted with unlimited VIPs and a lot more if game gets popular and successful. Not only designers are needed but also artists and testers.
