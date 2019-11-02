@@ -161,29 +161,63 @@
     //     }
     // }
     const userAction = async () => {
-        const response = await fetch(
-            'https://beataim.herokuapp.com/api/tournaments/getweeklyresults');
-        //["jwun","XVoIR","Brumor","Drimzi","kamyker2","Saotic","Bloodyjesse"]
-        const topPlayers = await response.json();
-        var htmlString = '<h4 style="word-spacing: 30px; border-width: 2px;border-style: outset; padding: 10px">';
-        for (let index = 0; index < topPlayers.length; index++) {
-            htmlString += topPlayers[index];
-            if (index > 0 && index + 1 % 3 === 0)
-                htmlString += '<br>';
-            else if (index + 1 < topPlayers.length)
-                htmlString += ' ';
-        }
+        let htmlString = '<h4 style="word-spacing: 30px; border-width: 2px;border-style: outset; padding: 10px">';
+        try {
+            const response = await fetch(
+                'https://beataim.herokuapp.com/api/tournaments/getweeklyresults');
+            //["jwun","XVoIR","Brumor","Drimzi","kamyker2","Saotic","Bloodyjesse"]
+            topPlayers = await response.json();
+            for (let index = 0; index < topPlayers.length; index++) {
+                htmlString += topPlayers[index];
+                if (index > 0 && index + 1 % 3 === 0)
+                    htmlString += '<br>';
+                else if (index + 1 < topPlayers.length)
+                    htmlString += ' ';
+            }
 
+        } catch (error) {
+
+            htmlString += 'error :(';
+            console.error(error);
+        }
         htmlString += '</h4>';
-        data = topPlayers;
+
         var div = document.createElement("div");
         div.className = "row text-center";
         div.insertAdjacentHTML('beforeend', htmlString);
+
+        div.insertAdjacentHTML('beforeend', '<br><h4>Current tournament ends in:</h4>');
+        div.insertAdjacentHTML('beforeend', '<h2 id="timer"></h2>');
+        div.insertAdjacentHTML('beforeend', '<br><h4>Prizes:</h4>');
+        const tournamentsList = await (await fetch("game/tournamentsList.json")).json();
+        div.insertAdjacentHTML('beforeend', `<h3>${tournamentsList.tournaments[0].prizePerPlayer}</h3>`);
+
+        console.log(tournamentsList);
+        var countDownDate = new Date(tournamentsList.tournaments[0].end).getTime();
+        // var countDownDate = new Date("Mon 11, 2019 12:00:00").getTime();
+
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h "
+                + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "Ended";
+            }
+        }, 1000);
+
         div.insertAdjacentHTML('beforeend', '<br><br><p>Tournaments are currently in development. We plan to make them last 4 days (Thursday - Sunday). Prizing will depend on number of active players.</p>');
         document.getElementsByClassName("content")[0].appendChild(div);
     }
-
     userAction();
+
 </script>
 
 </div>
