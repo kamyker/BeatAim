@@ -1,8 +1,8 @@
 {
     "tournaments": [
         {
-            "start": "Nov 1, 2019 12:00:00",
-            "end": "Nov 4, 2019 12:00:00",
+            "start": "Nov 1, 2019 12:00:00 GMT+00:00",
+            "end": "Nov 4, 2019 12:00:00 GMT+00:00",
             "prizePerPlayer": "300 BeatDollars every player"
         }
     ]
