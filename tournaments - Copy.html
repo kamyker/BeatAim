@@ -147,8 +147,8 @@
 
     <div class="content">
 <div class="row text-center">
-    <h1>Weekly tournaments</h1>
-    <!-- <p>The best players across all leaderboards, updated every 10 mins.</p> -->
+    <h1>Weekly top players</h1>
+    <p>The best players across all leaderboards, updated every 10 mins.</p>
 </div>
 <br>
 
@@ -161,41 +161,39 @@
     //     }
     // }
     const userAction = async () => {
+        let htmlString = '<h4 style="word-spacing: 30px; border-width: 2px;border-style: outset; padding: 10px">';
+        try {
+            const response = await fetch(
+                'https://beataim.herokuapp.com/api/tournaments/getweeklyresults');
+            //["jwun","XVoIR","Brumor","Drimzi","kamyker2","Saotic","Bloodyjesse"]
+            topPlayers = await response.json();
+            for (let index = 0; index < topPlayers.length; index++) {
+                htmlString += topPlayers[index];
+                if (index > 0 && index + 1 % 3 === 0)
+                    htmlString += '<br>';
+                else if (index + 1 < topPlayers.length)
+                    htmlString += ' ';
+            }
+
+        } catch (error) {
+
+            htmlString += 'error :(';
+            console.error(error);
+        }
+        htmlString += '</h4>';
+
         var div = document.createElement("div");
         div.className = "row text-center";
-        let htmlString;
-        // htmlString = '<h4 style="word-spacing: 30px; border-width: 2px;border-style: outset; padding: 10px">';
-        // try {
-        //     const response = await fetch(
-        //         'https://beataim.herokuapp.com/api/tournaments/getweeklyresults');
+        div.insertAdjacentHTML('beforeend', htmlString);
 
-        //     topPlayers = await response.json();
-        //     for (let index = 0; index < topPlayers.length; index++) {
-        //         htmlString += topPlayers[index];
-        //         if (index > 0 && index + 1 % 3 === 0)
-        //             htmlString += '<br>';
-        //         else if (index + 1 < topPlayers.length)
-        //             htmlString += ' ';
-        //     }
-
-        // } catch (error) {
-
-        //     htmlString += 'error :(';
-        //     console.error(error);
-        // }
-        // htmlString += '</h4>';
-        // div.insertAdjacentHTML('beforeend', htmlString);
-
-        // div.insertAdjacentHTML('beforeend', '<br><h4>Current tournament ends in:</h4>');
-        div.insertAdjacentHTML('beforeend', '<br><h4>Next tournament starts in:</h4>');
+        div.insertAdjacentHTML('beforeend', '<br><h4>Current tournament ends in:</h4>');
         div.insertAdjacentHTML('beforeend', '<h2 id="timer"></h2>');
-        div.insertAdjacentHTML('beforeend', '<br><h4>Prizing:</h4>');
+        div.insertAdjacentHTML('beforeend', '<br><h4>Prizes:</h4>');
         const tournamentsList = await (await fetch("game/tournamentsList.json")).json();
-        div.insertAdjacentHTML('beforeend', `<h4>${tournamentsList.tournaments[1].prizePerPlayer}</h4>`);
+        div.insertAdjacentHTML('beforeend', `<h3>${tournamentsList.tournaments[0].prizePerPlayer}</h3>`);
 
         console.log(tournamentsList);
-        var countDownDate = new Date(tournamentsList.tournaments[1].start).getTime();
-        // var countDownDate = new Date(tournamentsList.tournaments[0].end).getTime();
+        var countDownDate = new Date(tournamentsList.tournaments[0].end).getTime();
         // var countDownDate = new Date("Mon 11, 2019 12:00:00").getTime();
 
         var x = setInterval(function () {
@@ -215,21 +213,7 @@
             }
         }, 1000);
 
-        div.insertAdjacentHTML('beforeend', '<br><br><br><h4>Launch tournament winners:</h4>');
-
-        htmlString = '<h4 style="word-spacing: 30px; border-width: 2px;border-style: outset; padding: 10px">';
-        topPlayers = tournamentsList.tournaments[0].winners;
-        for (let index = 0; index < topPlayers.length; index++) {
-            htmlString += topPlayers[index];
-            if (index > 0 && index + 1 % 3 === 0)
-                htmlString += '<br>';
-            else if (index + 1 < topPlayers.length)
-                htmlString += ' ';
-        }
-        htmlString += '</h4>';
-        div.insertAdjacentHTML('beforeend', htmlString);
-
-        // div.insertAdjacentHTML('beforeend', '<br><br><p>Tournaments are currently in development. We plan to make them last 4 days (Thursday - Sunday). Prizing will depend on number of active players.</p>');
+        div.insertAdjacentHTML('beforeend', '<br><br><p>Tournaments are currently in development. We plan to make them last 4 days (Thursday - Sunday). Prizing will depend on number of active players.</p>');
         document.getElementsByClassName("content")[0].appendChild(div);
     }
     userAction();
