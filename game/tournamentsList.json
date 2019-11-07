@@ -3,7 +3,7 @@
         {
             "start": "Nov 1, 2019 12:00:00 GMT+00:00",
             "end": "Nov 4, 2019 12:00:00 GMT+00:00",
-            "prizePerPlayer": "300 BeatDollars every player",
+            "totalPrizePool": "300 BeatDollars every player",
             "winners": [
                 "Brumor",
                 "Qsyho",
@@ -18,7 +18,20 @@
         {
             "start": "Nov 8, 2019 12:00:00 GMT+00:00",
             "end": "Nov 11, 2019 12:00:00 GMT+00:00",
-            "prizePerPlayer": "300 BeatDollars every player"
+            "totalPrizePool": "<h4>50$</h4><p>(3500B$ + BeatAim Steam code for the best streamer)</p>",
+            "prizePerPlace": [
+                "B$1000",
+                "B$700",
+                "B$500",
+                "B$400",
+                "B$300",
+                "B$200",
+                "B$150",
+                "B$100",
+                "B$50",
+                "B$50",
+                "B50$"
+            ]
         }
     ]
 }
