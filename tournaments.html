@@ -189,8 +189,8 @@
             // topPlayers = JSON.parse('[["Brumor",295],["jwun",293],["HoundFPS",289],["FallenAng3L",273],["Xen",272],["Naoki",272],["meeko",271],["XensKittyCat",262],["nooz",257],["Misten",250]]');
             for (let i = 0; i < topPlayers.length; i++) {
                 htmlString += `<tr><td>${(i + 1)}</td>` +
-                    `<td>${(topPlayers[i][0])}</td>` +
-                    `<td>${(topPlayers[i][1])}</td>` +
+                    `<td>${(topPlayers[i][0] ? topPlayers[i][0] : '-')}</td>` +
+                    `<td>${(topPlayers[i][1] ? topPlayers[i][1] : '-')}</td>` +
                     `<td>${(tournamentsList.tournaments[1].prizePerPlace[i])}</td></tr>`;
                 // if (index > 0 && index + 1 % 3 === 0)
                 // else if (index + 1 < topPlayers.length)
