@@ -148,11 +148,11 @@
     <div class="content">
 <div class="row text-center">
     <h1>Weekly tournament #1</h1>
-    <h3>Starts in:</h3>
+    <h3>Ends in:</h3>
     <h4 id="timer"></h4>
     <h3>Map pool:</h3>
     <h5>Dragon War - Darkest Hour - Freaks</h5>
-    <p>Test ranking below will be reset at tournament start</p>
+    <p>Ranking updated every 10 minutes</p>
     <!-- <p>The best players across all leaderboards, updated every 10 mins.</p> -->
 </div>
 <br>
@@ -214,7 +214,7 @@
         div.insertAdjacentHTML('beforeend', `<h5>You have to RECORD you getting your top score. Send us a link to your video (YouTube) after tournament to receive the prize. <a href="https://discord.gg/2kW27Ez">discord</a><br><br>To win streamer prize your video mentioned above should be streamed live.</h5>`);
 
         console.log(tournamentsList);
-        var countDownDate = new Date(tournamentsList.tournaments[1].start).getTime();
+        var countDownDate = new Date(tournamentsList.tournaments[1].end).getTime();
         // var countDownDate = new  Date(tournamentsList.tournaments[0].end).getTime();
         // var countDownDate = new Date("Mon 11, 2019 12:00:00").getTime();
 
