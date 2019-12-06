@@ -45,6 +45,7 @@
     <script type="text/javascript" src="PlayFabClientApi.js"></script>
     <script type="text/javascript" src="PlayFabCustom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.3.0/json2html.min.js"></script>
+    <script src="https://d3js.org/d3-dsv.v1.min.js"></script>
 </head>
 
 <body class="">
@@ -166,13 +167,15 @@
     //         [array[i], array[j]] = [array[j], array[i]];
     //     }
     // }
-    const userAction = async () => {
+    const userAction = async () =>
+    {
         var div = document.createElement("div");
         div.className = "row text-center eight offset-by-two col";
         let htmlString = '';
         // htmlString = '<h4 style="word-spacing: 30px; border-width: 2px;border-style: outset; padding: 10px">';
         const tournamentsList = await (await fetch("game/tournamentsList.json")).json();
-        try {
+        try
+        {
             // const response = await fetch(
             //     'https://beataim.herokuapp.com/api/tournaments/getweeklyresults');
             htmlString += '<table class="expand hoverable" id="table-example"> \
@@ -182,26 +185,41 @@
                 <th>Player</th>\
                 <th>Score</th>\
                 <th>Prize</th>\
+                <th>Video</th>\
               </tr>\
             </thead>\
             <tbody>';
 
             // topPlayers = await response.json();
-            topPlayers = JSON.parse('[["XVoIR",3000],["Brumor",2951],["HoundFPS",2929],["jwun",2902],["FallenAng3L",2885],["meeko",2862],["Naoki",2856],["Nayllo",2820],["XensKittyCat",2771],["autumns",2745]]');
-            for (let i = 0; i < topPlayers.length; i++) {
+            // topPlayers = JSON.parse('[["XVoIR",3000],["Brumor",2951,"https://youtu.be/PbpKACOuSXo?t=1552"],["HoundFPS",2929],["jwun",2902],["FallenAng3L",2885],["meeko",2862],["Naoki",2856],["Nayllo",2820],["XensKittyCat",2771],["autumns",2745]]');
+            // var winnersJson = JSON.parse(tournamentsList.tournaments[1].winnersJson);
+            var winnersJsonString = await (await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTovzEFnaeJtKjxwdWwQQwgxbPTH_9_UnLbxWTnJruUnSAKFGBm9bQtbZw87EYCLH7FsbdVAVBMAxRH/pub?output=tsv")).text();
+            console.log(winnersJsonString);
+            var data = d3.tsvParse(winnersJsonString);
+            for (let i = 0; i < data.length; i++)
+            {
                 htmlString += `<tr><td>${(i + 1)}</td>` +
-                    `<td>${(topPlayers[i][0] ? topPlayers[i][0] : '-')}</td>` +
-                    `<td>${(topPlayers[i][1] ? topPlayers[i][1] : '-')}</td>` +
-                    `<td>${(tournamentsList.tournaments[1].prizePerPlace[i])}</td></tr>`;
+                    `<td>${(data[i].name ? data[i].name : '-')}</td>` +
+                    `<td>${(data[i].score ? data[i].score : '-')}</td>` +
+                    `<td>${(tournamentsList.tournaments[1].prizePerPlace[i])}</td>`
+                if (data[i].link)
+                {
+                    var site = "YouTube"
+                    if (data[i].link.includes("twitch"))
+                        site = "Twitch";
+                    htmlString += `<td><a href="${data[i].link}" target="_blank">${site}</a></td></tr>`
+                }
+                else
+                    htmlString += `<td>-</td></tr>`
                 // if (index > 0 && index + 1 % 3 === 0)
                 // else if (index + 1 < topPlayers.length)
                 //     htmlString += ' ';
             }
 
-        } catch (error) {
-
+        } catch (error)
+        {
             htmlString += 'error :(';
-            console.error(error);
+            console.log(error)
         }
         htmlString += '</tbody>\
           </table>';
@@ -219,28 +237,34 @@
         // var countDownDate = new  Date(tournamentsList.tournaments[0].end).getTime();
         // var countDownDate = new Date("Mon 11, 2019 12:00:00").getTime();
 
-        var x = setInterval(function () {
-            var now = new Date().getTime();
-            var distance = countDownDate - now;
-            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var timerElement = document.getElementById("timer");
+        if (timerElement)
+        {
+            var x = setInterval(function ()
+            {
+                var now = new Date().getTime();
+                var distance = countDownDate - now;
+                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            // document.getElementById("timer").innerHTML = days + "d " + hours + "h "
-            //     + minutes + "m " + seconds + "s ";
+                timerElement.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
 
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("timer").innerHTML = "Ended";
-            }
-        }, 1000);
+                if (distance < 0)
+                {
+                    clearInterval(x);
+                    timerElement.innerHTML = "Ended";
+                }
+            }, 1000);
+        }
 
         div.insertAdjacentHTML('beforeend', '<br><br><br><h4>Launch tournament winners:</h4>');
 
         htmlString = '<h4 style="word-spacing: 30px; border-width: 2px;border-style: outset; padding: 10px">';
         topPlayers = tournamentsList.tournaments[0].winners;
-        for (let index = 0; index < topPlayers.length; index++) {
+        for (let index = 0; index < topPlayers.length; index++)
+        {
             htmlString += topPlayers[index];
             if (index > 0 && index + 1 % 3 === 0)
                 htmlString += '<br>';
