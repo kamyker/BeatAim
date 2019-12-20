@@ -61,6 +61,7 @@
     <!-- <hr class="hide-on-non-mobile"> -->
     <div class="hide-on-non-mobile">
         <a href="news.html" onclick="meshki.closeSidenav()">News</a>
+        <a href="next-update.html" onclick="meshki.closeSidenav()">Next update</a>
         <!-- <a href="make-account.html" onclick="meshki.closeSidenav()">Alpha sign up</a> -->
         <a href="tournaments.html" onclick="meshki.closeSidenav()">Tournaments</a>
         <!-- <a href="tournaments.html" onclick="meshki.closeSidenav()">F2P Tournaments</a> -->
@@ -98,6 +99,7 @@
         </li> -->
         <div class="hide-on-mobile">
             <li><a href="news.html">News</a></li>
+            <li><a href="next-update.html">Next update</a></li>
             <!-- <li><a href="make-account.html">Alpha sign up</a></li> -->
             <li><a href="tournaments.html">Tournaments</a></li>
             <!-- <li><a href="redeem-key.html">Redeem alpha key</a></li> -->
@@ -159,15 +161,18 @@
 
 <script type="text/javascript">
     let template = { '<>': 'div', 'html': '<h4><a href="${url}" target="_blank"> ${title}</a><h4><p>${contents}</p>' };
-    function escapeRegExp(text) {
+    function escapeRegExp(text)
+    {
         return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
     }
-    String.prototype.replaceAll = function (search, replacement) {
+    String.prototype.replaceAll = function (search, replacement)
+    {
         var target = this;
         return target.replace(new RegExp(escapeRegExp(search), 'g'), replacement);
     };
 
-    const userAction = async () => {
+    const userAction = async () =>
+    {
         const response = await fetch('https://cors-anywhere.herokuapp.com/https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=1142220&count=3');
         const myJson = await response.json();
         data = myJson.appnews.newsitems;
@@ -175,7 +180,8 @@
         var htmlString = json2html.transform(data, template);
         var ytRegex = /(https:\/\/www\.|https:\/\/)(youtube|youtu)\.(com(\/watch\?v=(...........))|be(\/)(...........))/;
         var match = ytRegex.exec(htmlString);
-        while (match != null) {
+        while (match != null)
+        {
             var ytId = match[5];
             htmlString = htmlString.replace(match[0], '<div class="iframe-container"><iframe src="https://www.youtube.com/embed/' + ytId + '" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
             match = ytRegex.exec(htmlString);
