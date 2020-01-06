@@ -186,6 +186,7 @@
             htmlString = htmlString.replace(match[0], '<div class="iframe-container"><iframe src="https://www.youtube.com/embed/' + ytId + '" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>');
             match = ytRegex.exec(htmlString);
         }
+
         htmlString = htmlString
             .replaceAll("\n", "<br>")
             .replaceAll("[h1]", "<h5>")
@@ -197,7 +198,8 @@
             .replaceAll("list", "ul")
             .replaceAll("[*]", "</li><li>")
             .replaceAll("[", "<")
-            .replaceAll("]", ">");
+            .replaceAll("]", ">")
+            .replaceAll("{STEAM_CLAN_IMAGE}", "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/clans")
         div.innerHTML = htmlString;
 
         document.getElementsByClassName("content")[0].appendChild(div);
