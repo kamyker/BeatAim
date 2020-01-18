@@ -31,13 +31,53 @@ Resume,WZNÓW
 Settings,Ustawienia
 Restart,Restart
 Quit,Wyjdź
-Map score:,Pkt. mapy:
-Combo score:,Pkt. combo:
-Total score:,Pkt. razem:
-Beat Coins:,
-Top Score:,Najlepszy wynik:
+Map score,Pkt. mapy:
+Combo score,Pkt. combo:
+Total score,Pkt. razem:
+Beat Coins,
+Top Score,Najlepszy wynik:
 Back,Wstecz
 Remove map,Usuń mapę
 Open folder,Otwórz folder
 Advanced,Zaawansowane
 Play Test,Gra Testowa
+Main,
+Graphics,
+Other,
+Credits,
+Subscribe,
+Unsubscribe,
+Scaled,
+Exact,
+Diffculty Tags,
+Small Targets,
+Big Targets,
+Infrequent,
+Rapid,
+Vertical,
+Horizontal,
+Spaced,
+Crowded,
+Tracking Only,
+No Tracking,
+Wide Area,
+Narrow Area,
+Reflex,
+Arrows Only,
+Show maps with music on top,
+Other,
+More,
+Gun model by ,
+Open,
+Download,
+Cancel,
+Quit to menu,
+Do you really want to quit to menu?,
+Yes,
+No,
+VIP Perks,
+1 month,
+3 months,
+access to map generator with any music,
+priority support and founder role on discord,
+discord,

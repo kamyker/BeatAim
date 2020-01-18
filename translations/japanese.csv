@@ -6,7 +6,7 @@ Battle Pass,バトルパス
 Simple,シンプル
 Challenges,
 Generator,ジェネレータ
-Workshop,ワークショップ
+Workshop,
 Ranking,ランキング
 Music,譜面
 Guns,武器
@@ -31,13 +31,53 @@ Resume,再開
 Settings,設定
 Restart,はじめから
 Quit,終了
-Map score:,Mapスコア :
-Combo score:,Comboボーナス :
-Total score:,Scoreの合計 :
-Beat Coins:,
-Top Score:,トップスコア :
+Map score,Mapスコア 
+Combo score,Comboボーナス 
+Total score,Scoreの合計 
+Beat Coins,
+Top Score,トップスコア 
 Back,戻る
-Remove map,
-Open folder,
-Advanced,
-Play Test,
+Remove map,譜面を削除
+Open folder,フォルダ
+Advanced,高度な設定
+Play Test,プレテスト
+Main,メイン
+Graphics,グラフィックス
+Other,その他
+Credits,クレジット
+Subscribe,
+Unsubscribe,
+Scaled,
+Exact,
+Diffculty Tags,
+Small Targets,
+Big Targets,
+Infrequent,
+Rapid,
+Vertical,
+Horizontal,
+Spaced,
+Crowded,
+Tracking Only,
+No Tracking,
+Wide Area,
+Narrow Area,
+Reflex,
+Arrows Only,
+Show maps with music on top,
+Other,
+More,
+Gun model by ,
+Open,
+Download,
+Cancel,
+Quit to menu,
+Do you really want to quit to menu?,
+Yes,
+No,
+VIP Perks,
+1 month,
+3 months,
+access to map generator with any music,
+priority support and founder role on discord,
+discord,
