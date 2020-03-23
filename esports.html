@@ -295,12 +295,6 @@
                 // Rancid Ranch	76561198434726804	US	368
                 // Syssnow	76561198219523784	FR	363`;
 
-                // var encrypted = CryptoJS.AES.encrypt("https://beataim.azurewebsites.net/api/GetMonthlyLeague", "1");
-                // console.log(encrypted.toString());
-                // var decrypted = CryptoJS.AES.decrypt(encrypted.toString(), "1");
-                // var originalText = decrypted.toString(CryptoJS.enc.Utf8);
-                // console.log(doriginalText.toString());
-
                 var winnersJsonString = await (await fetch(CryptoJS.AES.decrypt(t, 'https://beataim.com/leaderboard.json').toString(CryptoJS.enc.Utf8))).text();
                 // var winnersJsonString = await (await fetch("http://localhost:7071/api/GetMonthlyLeague")).text();
                 console.log(winnersJsonString);
