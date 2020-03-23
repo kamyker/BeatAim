@@ -302,6 +302,7 @@
                 // console.log(doriginalText.toString());
 
                 var winnersJsonString = await (await fetch(CryptoJS.AES.decrypt(t, 'https://beataim.com/leaderboard.json').toString(CryptoJS.enc.Utf8))).text();
+                // var winnersJsonString = await (await fetch("http://localhost:7071/api/GetMonthlyLeague")).text();
                 console.log(winnersJsonString);
                 var data = d3.tsvParse(winnersJsonString);
                 for (let i = 0; i < data.length; i++)
@@ -319,7 +320,7 @@
                             place = "🥉";
                             break;
                         default:
-                            place = i;
+                            place = i + 1;
                     }
 
                     htmlString += `<tr><td>${(place)}</td>` +
