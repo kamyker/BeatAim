@@ -185,6 +185,7 @@
     // }
     async function main()
     {
+        SetTimer();
 
         var t = "U2FsdGVkX18n+Uz1uB97JU15Va5bZASl6kXVcIyD6S8oEx3ANg6ywsCcW10y0iDMp0VM1RIB2p7gHzGGW0m+9QYdpBZpuo4RTWcM0PAVypo=";
         var div = document.createElement("div");
@@ -200,7 +201,6 @@
         // div.insertAdjacentHTML('beforeend', '<br><h4>Current tournament ends in:</h4>');
 
 
-        SetTimer();
 
 
         div.insertAdjacentHTML('beforeend', '<br><br><br><h4>Previous tournaments:</h4>');
@@ -214,7 +214,6 @@
             var countDownDate;
             var today = new Date();
             var prefix;
-            console.log(today.getDate());
             if (today.getDate() > 7 && today.getMonth() > 2)
             {
                 prefix = "Ends in: ";
@@ -234,7 +233,9 @@
             var timerElement = document.getElementById("timer");
             if (timerElement)
             {
-                var x = setInterval(function ()
+                var x = setInterval(UpdateTime, 1000);
+                UpdateTime();
+                function UpdateTime()
                 {
                     var now = new Date().getTime();
                     var distance = countDownDate - now;
@@ -251,8 +252,7 @@
                     // }
                     // else
                     timerElement.innerHTML = prefix + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-                }, 1000);
+                }
             }
         }
 
@@ -302,9 +302,21 @@
                 // Rancid Ranch	76561198434726804	US	368
                 // Syssnow	76561198219523784	FR	363`;
 
-
-                // window.localStorage.getItem("MonthlyLeague")
-                var accessData = GrtAzureAccessData("MonthlyLeagueTsv", "Leaderboard");
+                // window.localStorage.removeItem("MonthlyLeague");
+                var leagueSaved = JSON.parse(window.localStorage.getItem("MonthlyLeague"));
+                var resetTime = new Date(leagueSaved.Date).getTime() + 1 * 60000;
+                if (!leagueSaved
+                    || !leagueSaved.hasOwnProperty("Value")
+                    || !leagueSaved.hasOwnProperty("Date")
+                    || new Date().getTime() > resetTime)
+                {
+                    console.log("dl");
+                    var accessData = GrtAzureAccessData("MonthlyLeagueTsv", "Leaderboard");
+                    var winnersJsonString = await (await fetch(accessData.Url, { headers: accessData.Headers })).text();
+                    var leagueSaved = JSON.parse(winnersJsonString);
+                    leagueSaved.Date = new Date();
+                    window.localStorage.setItem("MonthlyLeague", JSON.stringify(leagueSaved));
+                }
 
                 // console.log(accessData.Url);
                 // for (var key in accessData.Headers)
@@ -312,15 +324,12 @@
                 //     var value = accessData.Headers[key];
 
                 //     console.log(key + ": " + value);
-                //     // do something with "key" and "value" variables
                 // }
-                var winnersJsonString = await (await fetch(accessData.Url, { headers: accessData.Headers })).text();
-                console.log(winnersJsonString);
                 // var winnersJsonString = await (await fetch(CryptoJS.AES.decrypt(t, 'https://beataim.com/leaderboard.json').toString(CryptoJS.enc.Utf8))).text();
                 // localStorage.setItem('myCat', 'Tom');
                 // var winnersJsonString = await (await fetch("http://localhost:7071/api/GetMonthlyLeague")).text();
                 // console.log(winnersJsonString);
-                var data = d3.tsvParse(JSON.parse(winnersJsonString).Value);
+                var data = d3.tsvParse(leagueSaved.Value);
                 for (let i = 0; i < data.length; i++)
                 {
                     var place;
