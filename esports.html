@@ -302,22 +302,27 @@
                 // Rancid Ranch	76561198434726804	US	368
                 // Syssnow	76561198219523784	FR	363`;
 
+                async function Dl()
+                {
+                    var accessData = GrtAzureAccessData("MonthlyLeagueTsv", "Leaderboard");
+                    var fetched = await fetch(accessData.Url, { headers: accessData.Headers });
+                    var winnersJsonString = await fetched.text();
+                    var leagueSaved = JSON.parse(winnersJsonString);
+                    leagueSaved.Date = new Date();
+                    window.localStorage.setItem("MonthlyLeague", JSON.stringify(leagueSaved));
+                    return leagueSaved;
+                }
+
                 // window.localStorage.removeItem("MonthlyLeague");
                 var leagueSaved = JSON.parse(window.localStorage.getItem("MonthlyLeague"));
                 if (!leagueSaved
                     || !leagueSaved.hasOwnProperty("Value")
                     || !leagueSaved.hasOwnProperty("Date"))
-                {
-                    var resetTime = new Date(leagueSaved.Date).getTime() + 1 * 60000;
-                    if (new Date().getTime() > resetTime)
-                    {
-                        var accessData = GrtAzureAccessData("MonthlyLeagueTsv", "Leaderboard");
-                        var winnersJsonString = await (await fetch(accessData.Url, { headers: accessData.Headers })).text();
-                        var leagueSaved = JSON.parse(winnersJsonString);
-                        leagueSaved.Date = new Date();
-                        window.localStorage.setItem("MonthlyLeague", JSON.stringify(leagueSaved));
-                    }
-                }
+                    leagueSaved = await Dl();
+                else if (leagueSaved.hasOwnProperty("Date")
+                    && new Date().getTime() > new Date(leagueSaved.Date).getTime() + 1 * 60000)
+                    leagueSaved = await Dl();
+
 
                 // console.log(accessData.Url);
                 // for (var key in accessData.Headers)
