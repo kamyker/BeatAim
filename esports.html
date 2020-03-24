@@ -314,8 +314,8 @@
                 //     console.log(key + ": " + value);
                 //     // do something with "key" and "value" variables
                 // }
-                var winnersJsonString = await fetch(accessData.Url, { headers: accessData.Headers });
-
+                var winnersJsonString = await (await fetch(accessData.Url, { headers: accessData.Headers })).text();
+                console.log(winnersJsonString);
                 // var winnersJsonString = await (await fetch(CryptoJS.AES.decrypt(t, 'https://beataim.com/leaderboard.json').toString(CryptoJS.enc.Utf8))).text();
                 // localStorage.setItem('myCat', 'Tom');
                 // var winnersJsonString = await (await fetch("http://localhost:7071/api/GetMonthlyLeague")).text();
