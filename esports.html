@@ -304,18 +304,19 @@
 
                 // window.localStorage.removeItem("MonthlyLeague");
                 var leagueSaved = JSON.parse(window.localStorage.getItem("MonthlyLeague"));
-                var resetTime = new Date(leagueSaved.Date).getTime() + 1 * 60000;
                 if (!leagueSaved
                     || !leagueSaved.hasOwnProperty("Value")
-                    || !leagueSaved.hasOwnProperty("Date")
-                    || new Date().getTime() > resetTime)
+                    || !leagueSaved.hasOwnProperty("Date"))
                 {
-                    console.log("dl");
-                    var accessData = GrtAzureAccessData("MonthlyLeagueTsv", "Leaderboard");
-                    var winnersJsonString = await (await fetch(accessData.Url, { headers: accessData.Headers })).text();
-                    var leagueSaved = JSON.parse(winnersJsonString);
-                    leagueSaved.Date = new Date();
-                    window.localStorage.setItem("MonthlyLeague", JSON.stringify(leagueSaved));
+                    var resetTime = new Date(leagueSaved.Date).getTime() + 1 * 60000;
+                    if (new Date().getTime() > resetTime)
+                    {
+                        var accessData = GrtAzureAccessData("MonthlyLeagueTsv", "Leaderboard");
+                        var winnersJsonString = await (await fetch(accessData.Url, { headers: accessData.Headers })).text();
+                        var leagueSaved = JSON.parse(winnersJsonString);
+                        leagueSaved.Date = new Date();
+                        window.localStorage.setItem("MonthlyLeague", JSON.stringify(leagueSaved));
+                    }
                 }
 
                 // console.log(accessData.Url);
