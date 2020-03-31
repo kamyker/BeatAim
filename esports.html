@@ -355,9 +355,9 @@
                     }
 
                     htmlString += `<tr><td>${(place)}</td>` +
-                        `<td>${(data[i].Name ?? '-')}</td>` +
-                        `<td>${(data[i].Score ?? '-')}</td>` +
-                        `<td>${(leagueSaved.Prizes[i] ?? "")}</td>`// tList.tournaments[tList.tournaments.length - 1].prizePerPlace[i] ?? "")}</td>`
+                        `<td>${(data[i].Name || '-')}</td>` +
+                        `<td>${(data[i].Score || '-')}</td>` +
+                        `<td>${(leagueSaved.Prizes[i] || "")}</td>`// tList.tournaments[tList.tournaments.length - 1].prizePerPlace[i] ?? "")}</td>`
                     // if (data[i].link)
                     // {
                     //     var site = "YouTube"
