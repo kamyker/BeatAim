@@ -406,7 +406,7 @@
 
     function GrtAzureAccessData(documentId, partitionKey)
     {
-        var readOnlyKey = "dC6FZTJPFC2iTteFH2aDHWStanmK7vOVg0qlbKXE2weg3NEo1N9Sh6SoT8cumP7NWHm6mqDfco55sVItSJphzQ==";
+        var readOnlyKey = "tmbHe9onXQ5JUXd41XJG7SLKlvnW9SRccIgrwxGQT61009KTsarNJf1CyaDFJakQj55psA34K8AkW1uyIx2TJA==";
         var date = new Date().toUTCString()
 
         var collectionId = "main";
@@ -420,7 +420,7 @@
         var token = GenerateMasterKeyAuthorizationSignature(verb, resourceId, resourceType, readOnlyKey, "master", "1.0", date);
 
         return {
-            Url: `https://beataim.documents.azure.com/${resourceLink}`,
+            Url: `https://badata.documents.azure.com/${resourceLink}`,
             Headers:
             {
                 "Authorization": token,
