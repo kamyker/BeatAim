@@ -223,7 +223,7 @@
             else
             {
                 prefix = "Starts in: ";
-                var EighthDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 8);
+                var EighthDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 0, 8);
                 countDownDate = EighthDayOfMonth.getTime();
             }
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
@@ -258,8 +258,8 @@
 
         function AddPrizing(tList)
         {
-            div.insertAdjacentHTML('beforeend', '<br><br><h3>Total Prizing (test league):</h3>');
-            div.insertAdjacentHTML('beforeend', `5x VIPs (25$)`);
+            div.insertAdjacentHTML('beforeend', '<br><br><h3>Total Prizing:</h3>');
+            div.insertAdjacentHTML('beforeend', `TBD (50$-100$ + ~10 VIPS)`);
             div.insertAdjacentHTML('beforeend', `<br><br><br><br>`);
         }
 
