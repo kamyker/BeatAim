@@ -156,17 +156,17 @@
 
     <div class="content">
 <div class="row text-center">
-    <h2>🏅 Monthly League 🏆</h2>
+    <h2>📷 Streamers League 🎮</h2>
     <div id="timer"></div>
     <!-- <h3>Ends in:</h3>
     <h4 id="timer"></h4> -->
     <!-- <h3>Map pool:</h3> -->
     <!-- <h5>Dragon War - Darkest Hour - Freaks</h5> -->
     <div class="six offset-by-three col">
-        <h6>Tournament starts a week after Monthly Update, exactly on 8th day and lasts till the end
-            of the month.</h6>
-        <h6>All non-vip leaderboards (Simple maps) are combined together to reveal top 100 best players in Beat Aim.
-        </h6>
+        <h6>Tournament starts on 1st day of every month.</h6>
+        <h6>Watch time of every Beat Aim streamer is added to the leaderboard below every 5 minutes. Currently only
+            Twitch
+            is supported. Let us know if you'd like to see other platforms.</h6>
     </div>
     <!-- <h3>Results:</h3> -->
     <!-- <p>The best players across all leaderboards, updated every 10 mins.</p>  -->
@@ -208,8 +208,8 @@
 
 
         div.insertAdjacentHTML('beforeend', '<br><br><br><h4>Previous tournaments:</h4>');
-        div.insertAdjacentHTML('beforeend', '<a href="https://cdn.discordapp.com/attachments/595011119790161920/694668016109224067/859ace597e72b606381310ce0cd5dd34.png" target="_blank" >Monthly League March Test</a><br>');
-        div.insertAdjacentHTML('beforeend', '<a href="tournamentsArchive/weekly1" >Weekly #1</a>');
+        // div.insertAdjacentHTML('beforeend', '<a href="https://cdn.discordapp.com/attachments/595011119790161920/694668016109224067/859ace597e72b606381310ce0cd5dd34.png" target="_blank" >Monthly League March Test</a><br>');
+        // div.insertAdjacentHTML('beforeend', '<a href="tournamentsArchive/weekly1" >Weekly #1</a>');
 
         document.getElementsByClassName("content")[0].appendChild(div);
 
@@ -219,17 +219,19 @@
             var countDownDate;
             var today = new Date();
             var prefix;
-            if (today.getDate() > 11)//   && today.getMonth() > 2)
+            if (today.getMonth() > 3)//today.getDate() > 0)//   && today.getMonth() > 2)
             {
                 prefix = "Ends in: ";
-                var lastDayOfMonth = new Date(Date.UTC(today.getFullYear(), today.getMonth() + 1, 1));
+                var lastDayOfMonth = Date.UTC(today.getFullYear(), today.getMonth() + 1, 1);
                 countDownDate = lastDayOfMonth.setUTCHours(-2);
             }
             else
             {
                 prefix = "Starts in: ";
-                var eighthDayOfMonth = new Date(Date.UTC(today.getFullYear(), today.getMonth() + 0, 8));
-                countDownDate = eighthDayOfMonth.setUTCHours(-2);
+                // var EighthDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 0, 8);
+                // var firstDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
+                var firstDayOfMonth = new Date(Date.UTC(today.getFullYear(), today.getMonth() + 1, 1));
+                countDownDate = firstDayOfMonth.setUTCHours(-2);
             }
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
             // var countDownDate = new  Date(tournamentsList.tournaments[0].end).getTime();
@@ -264,7 +266,7 @@
         function AddPrizing(tList)
         {
             div.insertAdjacentHTML('beforeend', '<br><br><h3>Total Prizing:</h3>');
-            div.insertAdjacentHTML('beforeend', `60$ + 10 VIPS (50$)`);
+            div.insertAdjacentHTML('beforeend', `40$ + 6 VIPS (30$)`);
             div.insertAdjacentHTML('beforeend', `<br><br><br><br>`);
         }
 
@@ -280,46 +282,26 @@
               <tr>\
                 <th>Place</th>\
                 <th>Player</th>\
-                <th>Score</th>\
+                <th>Watch time(h)</th>\
                 <th>Prize</th>\
-                <th>Country</th>\
+                <th>Lang</th>\
               </tr>\
             </thead>\
             <tbody>';
 
-                // topPlayers = await response.json();
-                // topPlayers = JSON.parse('[["XVoIR",3000],["Brumor",2951,"https://youtu.be/PbpKACOuSXo?t=1552"],["HoundFPS",2929],["jwun",2902],["FallenAng3L",2885],["meeko",2862],["Naoki",2856],["Nayllo",2820],["XensKittyCat",2771],["autumns",2745]]');
-                // var winnersJson = JSON.parse(tournamentsList.tournaments[1].winnersJson);
-                // var winnersJsonString = await (await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTovzEFnaeJtKjxwdWwQQwgxbPTH_9_UnLbxWTnJruUnSAKFGBm9bQtbZw87EYCLH7FsbdVAVBMAxRH/pub?output=tsv")).text();
-                // var winnersJsonString = `Name	SteamId	Country	Score
-                // Leviathan	76561198084022633	US	468
-                // Pyroxia	76561198133585151	TR	466
-                // Sosik	76561198093456452	US	465
-                // GlycerinDawn	76561198864176237	US	459
-                // Nayllo	76561198165098634		457
-                // Merryeliot[FR]	76561198106672504		447
-                // Kamyker	76561198053936045	PL	445
-                // ImSorry	76561198141855723		411
-                // FallenMystery15	76561198844204184		396
-                // KNIGHT	76561198985195690		395
-                // eck	76561198097149970	US	379
-                // djmon007	76561198119137613	US	377
-                // Rancid Ranch	76561198434726804	US	368
-                // Syssnow	76561198219523784	FR	363`;
-
                 async function Dl()
                 {
-                    var accessData = GrtAzureAccessData("MonthlyLeagueTsv", "Leaderboard");
+                    var accessData = GrtAzureAccessData("TwitchLeagueTsv", "Leaderboard");
                     var fetched = await fetch(accessData.Url, { headers: accessData.Headers });
                     var winnersJsonString = await fetched.text();
                     var leagueSaved = JSON.parse(winnersJsonString);
                     leagueSaved.Date = new Date();
-                    window.localStorage.setItem("MonthlyLeague", JSON.stringify(leagueSaved));
+                    window.localStorage.setItem("TwitchLeagueTsv", JSON.stringify(leagueSaved));
                     return leagueSaved;
                 }
 
-                // window.localStorage.removeItem("MonthlyLeague");
-                var leagueSaved = JSON.parse(window.localStorage.getItem("MonthlyLeague"));
+                // window.localStorage.removeItem("TwitchLeagueTsv");
+                var leagueSaved = JSON.parse(window.localStorage.getItem("TwitchLeagueTsv"));
                 if (!leagueSaved
                     || !leagueSaved.hasOwnProperty("Value")
                     || !leagueSaved.hasOwnProperty("Date"))
@@ -328,8 +310,8 @@
                     && new Date().getTime() > new Date(leagueSaved.Date).getTime() + 1 * 60000)
                     leagueSaved = await Dl();
 
-
                 console.log(leagueSaved);
+                // console.log(accessData.Url);
                 // for (var key in accessData.Headers)
                 // {
                 //     var value = accessData.Headers[key];
@@ -361,7 +343,7 @@
 
                     htmlString += `<tr><td>${(place)}</td>` +
                         `<td>${(data[i].Name || '-')}</td>` +
-                        `<td>${(data[i].Score || '-')}</td>` +
+                        `<td>${(Math.round(data[i].Score / 60) || '-')}</td>` +
                         `<td>${(leagueSaved.Prizes[i] || "")}</td>`// tList.tournaments[tList.tournaments.length - 1].prizePerPlace[i] ?? "")}</td>`
                     // if (data[i].link)
                     // {
@@ -401,15 +383,11 @@
         function AddRules()
         {
             div.insertAdjacentHTML('beforeend', '<br><h3>Rules:</h3>');
-            div.insertAdjacentHTML('beforeend', `<p>All players are required to link a video to at least one of their top leaderboard placements.</p>`);
-            div.insertAdjacentHTML('beforeend', `<p>Players winning real $$$ prizes have to link at least 5 videos.</p>`);
-            div.insertAdjacentHTML('beforeend', `<p>Videos should be set to public (not unlisted or private).</p>`);
+            div.insertAdjacentHTML('beforeend', `<p>Valid paypal account is required to redeem the winnings.</p>`);
+            div.insertAdjacentHTML('beforeend', `<p>Player may be banned for unappropriated behavior including view bots, streaming other games when Beat Aim is selected etc.</p>`);
         }
     }
     main();
-
-
-
 
 </script>
 
