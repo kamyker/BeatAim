@@ -219,16 +219,16 @@
             var countDownDate;
             var today = new Date();
             var prefix;
-            if (today.getDate() > 11)//   && today.getMonth() > 2)
+            if (today.getUTCDate() > 11)//   && today.getMonth() > 2)
             {
                 prefix = "Ends in: ";
-                var lastDayOfMonth = new Date(Date.UTC(today.getFullYear(), today.getMonth() + 1, 1));
+                var lastDayOfMonth = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1));
                 countDownDate = lastDayOfMonth.setUTCHours(-2);
             }
             else
             {
                 prefix = "Starts in: ";
-                var eighthDayOfMonth = new Date(Date.UTC(today.getFullYear(), today.getMonth() + 0, 8));
+                var eighthDayOfMonth = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, 8));
                 countDownDate = eighthDayOfMonth.setUTCHours(-2);
             }
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();

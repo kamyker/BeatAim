@@ -219,10 +219,10 @@
             var countDownDate;
             var today = new Date();
             var prefix;
-            if (today.getMonth() > 3)//today.getDate() > 0)//   && today.getMonth() > 2)
+            if (new Date(today.getUTCDate()).getUTCMonth() > 3)//today.getDate() > 0)//   && today.getMonth() > 2)
             {
                 prefix = "Ends in: ";
-                var lastDayOfMonth = Date.UTC(today.getFullYear(), today.getMonth() + 1, 1);
+                var lastDayOfMonth = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1));
                 countDownDate = lastDayOfMonth.setUTCHours(-2);
             }
             else
@@ -230,7 +230,7 @@
                 prefix = "Starts in: ";
                 // var EighthDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 0, 8);
                 // var firstDayOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 1);
-                var firstDayOfMonth = new Date(Date.UTC(today.getFullYear(), today.getMonth() + 1, 1));
+                var firstDayOfMonth = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1));
                 countDownDate = firstDayOfMonth.setUTCHours(-2);
             }
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
