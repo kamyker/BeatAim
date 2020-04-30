@@ -291,7 +291,7 @@
               <tr>\
                 <th>Place</th>\
                 <th>Player</th>\
-                <th>Watch time(h)</th>\
+                <th>Watch time</th>\
                 <th>Prize</th>\
                 <th>Lang</th>\
               </tr>\
@@ -350,9 +350,11 @@
                             place = i + 1;
                     }
 
+                    var scoreString = `<td>${(Math.round(data[i].Score / 60))}</td>`
+
                     htmlString += `<tr><td>${(place)}</td>` +
                         `<td>${(data[i].Name || '-')}</td>` +
-                        `<td>${(Math.round(data[i].Score / 60) || '-')}</td>` +
+                        `<td>${(Math.round(data[i].Score / 60) || '0')}h ${(data[i].Score % 60 || '0')}m</td>` +
                         `<td>${(leagueSaved.Prizes[i] || "")}</td>`// tList.tournaments[tList.tournaments.length - 1].prizePerPlace[i] ?? "")}</td>`
                     // if (data[i].link)
                     // {
