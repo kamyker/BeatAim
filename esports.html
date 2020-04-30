@@ -218,18 +218,26 @@
         {
             var countDownDate;
             var today = new Date();
+            // var today = new Date('April 30, 2020 22:00:00 GMT-01:00');
+            // var today = new Date('May 1, 2020 00:00:00 GMT+01:00');
+            // var today = new Date('April 30, 2020 24:00:00 GMT-01:00');
+            // var today = new Date('May 1, 2020 02:00:00 GMT+01:00');
+
             var prefix;
-            if (today.getUTCDate() > 11)//   && today.getMonth() > 2)
+            if (today.getUTCDate() > 8 && today.getUTCMonth() != 3)//   && today.getMonth() > 2)
             {
                 prefix = "Ends in: ";
-                var lastDayOfMonth = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1));
-                countDownDate = lastDayOfMonth.setUTCHours(-2);
+                var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
+                countDownDate = lastDayOfMonth;
             }
             else
             {
                 prefix = "Starts in: ";
-                var eighthDayOfMonth = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, 8));
-                countDownDate = eighthDayOfMonth.setUTCHours(-2);
+                var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, 8);
+                // console.log(eighthDayOfMonth);
+                countDownDate = eighthDayOfMonth;
+                if (today.getUTCMonth() == 3)
+                    countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 8);
             }
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
             // var countDownDate = new  Date(tournamentsList.tournaments[0].end).getTime();
@@ -242,7 +250,7 @@
                 UpdateTime();
                 function UpdateTime()
                 {
-                    var now = new Date().getTime();
+                    var now = today.getTime();
                     var distance = countDownDate - now;
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
                     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
