@@ -282,7 +282,6 @@
         async function AddWinners(tList)
         {
             div.insertAdjacentHTML('beforeend', '<h3>Ranking:</h3>');
-            div.insertAdjacentHTML('beforeend', `(resets on tournament start)<br>`);
 
             try
             {
@@ -319,20 +318,8 @@
                     && new Date().getTime() > new Date(leagueSaved.Date).getTime() + 1 * 60000)
                     leagueSaved = await Dl();
 
-                console.log(leagueSaved);
-                // console.log(accessData.Url);
-                // for (var key in accessData.Headers)
-                // {
-                //     var value = accessData.Headers[key];
-
-                //     console.log(key + ": " + value);
-                // }
-                // var winnersJsonString = await (await fetch(CryptoJS.AES.decrypt(t, 'https://beataim.com/leaderboard.json').toString(CryptoJS.enc.Utf8))).text();
-                // localStorage.setItem('myCat', 'Tom');
-                // var winnersJsonString = await (await fetch("http://localhost:7071/api/GetMonthlyLeague")).text();
-                // console.log(winnersJsonString);
                 var data = d3.tsvParse(leagueSaved.Value);
-                for (let i = 0; i < data.length; i++)
+                for (let i = 0; i < data.length || i < leagueSaved.Prizes.length; i++)
                 {
                     var place;
                     switch (i)
@@ -350,34 +337,36 @@
                             place = i + 1;
                     }
 
-                    var scoreString = `<td>${(Math.round(data[i].Score / 60))}</td>`
+                    var watchTimeTotalMinutes = (data[i]?.Score || 0);
+                    var watchTimeH = Math.round(watchTimeTotalMinutes / 60);
+                    var watchTimeM = watchTimeTotalMinutes % 60;
+
+                    var watchTimeText = `<td>`;
+                    if (watchTimeH > 0)
+                        watchTimeText += `${watchTimeH}h `
+
+                    watchTimeText += `${watchTimeM}min`
+                    watchTimeText += `</td>`
 
                     htmlString += `<tr><td>${(place)}</td>` +
-                        `<td>${(data[i].Name || '-')}</td>` +
-                        `<td>${(Math.round(data[i].Score / 60) || '0')}h ${(data[i].Score % 60 || '0')}m</td>` +
-                        `<td>${(leagueSaved.Prizes[i] || "")}</td>`// tList.tournaments[tList.tournaments.length - 1].prizePerPlace[i] ?? "")}</td>`
-                    // if (data[i].link)
-                    // {
-                    //     var site = "YouTube"
-                    //     if (data[i].link.includes("twitch"))
-                    //         site = "Twitch";
-                    //     htmlString += `<td><a href="${data[i].link}" target="_blank">${site}</a></td></tr>`
-                    // }
-                    // else
-                    //     htmlString += `<td>-</td></tr>`
-                    var country = data[i].Country
+                        `<td>${(data[i]?.Name || '-')}</td>` +
+                        watchTimeText +
+                        `<td>${(leagueSaved?.Prizes[i] || "")}</td>`;
+
+                    var country = data[i]?.Country;
                     if (country)
                     {
                         if (country == "us")
-                            htmlString += `<td><i class="em em-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`
+                            htmlString += `<td><i class="em em-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`;
                         else
-                            htmlString += `<td><i class="em em-flag-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`
+                            htmlString += `<td><i class="em em-flag-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`;
                     }
                     else
-                        htmlString += `<td></td></tr>`
-                    // if (index > 0 && index + 1 % 3 === 0)
-                    // else if (index + 1 < topPlayers.length)
-                    //     htmlString += ' ';
+                        htmlString += `<td></td></tr>`;
+                }
+                if (data.length < leagueSaved.Prizes.length)
+                {
+
 
                 }
 
@@ -395,7 +384,7 @@
         {
             div.insertAdjacentHTML('beforeend', '<br><h3>Rules:</h3>');
             div.insertAdjacentHTML('beforeend', `<p>Valid paypal account is required to redeem the winnings.</p>`);
-            div.insertAdjacentHTML('beforeend', `<p>Player may be banned for unappropriated behavior including view bots, streaming other games when Beat Aim is selected etc.</p>`);
+            div.insertAdjacentHTML('beforeend', `<p>Player may be banned for unappropriated behavior including view bots, streaming other games when Beat Aim is selected as channel category etc.</p>`);
         }
     }
     main();
