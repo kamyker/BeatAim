@@ -338,7 +338,7 @@
                     }
 
                     var watchTimeTotalMinutes = (data[i]?.Score || 0);
-                    var watchTimeH = Math.round(watchTimeTotalMinutes / 60);
+                    var watchTimeH = Math.floor(watchTimeTotalMinutes / 60);
                     var watchTimeM = watchTimeTotalMinutes % 60;
 
                     var watchTimeText = `<td>`;
@@ -379,6 +379,7 @@
           </table>';
             div.insertAdjacentHTML('beforeend', htmlString);
         }
+
 
         function AddRules()
         {
