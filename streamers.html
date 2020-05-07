@@ -358,6 +358,8 @@
                     {
                         if (country == "us")
                             htmlString += `<td><i class="em em-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`;
+                        else if (country == "en")
+                            htmlString += `<td><i class="em em-${gb}" aria-role="presentation"></i></td></tr>`;
                         else
                             htmlString += `<td><i class="em em-flag-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`;
                     }
