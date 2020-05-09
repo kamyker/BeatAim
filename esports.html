@@ -222,9 +222,9 @@
             // var today = new Date('May 1, 2020 00:00:00 GMT+01:00');
             // var today = new Date('April 30, 2020 24:00:00 GMT-01:00');
             // var today = new Date('May 1, 2020 02:00:00 GMT+01:00');
-
+            var startDay = 11;
             var prefix;
-            if (today.getUTCDate() > 8 && today.getUTCMonth() != 3)//   && today.getMonth() > 2)
+            if (today.getUTCDate() > startDay && today.getUTCMonth() != 3)//   && today.getMonth() > 2)
             {
                 prefix = "Ends in: ";
                 var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
@@ -233,11 +233,11 @@
             else
             {
                 prefix = "Starts in: ";
-                var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, 10);
+                var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, startDay);
                 // console.log(eighthDayOfMonth);
                 countDownDate = eighthDayOfMonth;
                 if (today.getUTCMonth() == 3)
-                    countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 10);
+                    countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, startDay);
             }
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
             // var countDownDate = new  Date(tournamentsList.tournaments[0].end).getTime();
