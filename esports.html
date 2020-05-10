@@ -234,10 +234,7 @@
             {
                 prefix = "Starts in: ";
                 var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, startDay);
-                // console.log(eighthDayOfMonth);
                 countDownDate = eighthDayOfMonth;
-                if (today.getUTCMonth() == 3)
-                    countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, startDay);
             }
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
             // var countDownDate = new  Date(tournamentsList.tournaments[0].end).getTime();
@@ -250,7 +247,7 @@
                 UpdateTime();
                 function UpdateTime()
                 {
-                    var now = today.getTime();
+                    var now = new Date().getTime();
                     var distance = countDownDate - now;
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
                     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -271,8 +268,8 @@
 
         function AddPrizing(tList)
         {
-            div.insertAdjacentHTML('beforeend', '<br><br><h3>Total Prizing:</h3>');
-            div.insertAdjacentHTML('beforeend', `60$ + 10 VIPS (50$)`);
+            div.insertAdjacentHTML('beforeend', '<br><br><h3>Total Prize pool:</h3>');
+            div.insertAdjacentHTML('beforeend', `100$ + 10 VIPS (50$)`);
             div.insertAdjacentHTML('beforeend', `<br><br><br><br>`);
         }
 
