@@ -224,7 +224,7 @@
             // var today = new Date('May 1, 2020 02:00:00 GMT+01:00');
             var startDay = 11;
             var prefix;
-            if (today.getUTCDate() > startDay && today.getUTCMonth() != 3)//   && today.getMonth() > 2)
+            if (today.getUTCDate() >= startDay && today.getUTCMonth() != 3)//   && today.getMonth() > 2)
             {
                 prefix = "Ends in: ";
                 var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
