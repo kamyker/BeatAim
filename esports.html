@@ -198,9 +198,10 @@
 
         const tournamentsList = await (await fetch("game/tournamentsList.json")).json();
         AddPrizing(tournamentsList);
+        AddRules();
+        //div.insertAdjacentHTML('beforeend', `<br><br><br><br>`);
         await AddWinners(tournamentsList);
 
-        AddRules();
 
         // div.insertAdjacentHTML('beforeend', '<br><h4>Current tournament ends in:</h4>');
 
@@ -268,9 +269,9 @@
 
         function AddPrizing(tList)
         {
-            div.insertAdjacentHTML('beforeend', '<br><br><h3>Total Prizing:</h3>');
+            div.insertAdjacentHTML('beforeend', '<h3>Total Prizing:</h3>');
             div.insertAdjacentHTML('beforeend', `100$ + 10 VIPS (50$)`);
-            div.insertAdjacentHTML('beforeend', `<br><br><br><br>`);
+            div.insertAdjacentHTML('beforeend', `<br>`);
         }
 
         async function AddWinners(tList)
