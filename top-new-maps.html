@@ -157,29 +157,250 @@
 </div>
 
     <div class="content">
-
-
 <div class="row text-center">
-    <h1>F2P Tournaments</h1>
-</div>
-
-<div class="row text-center">
-    <div class="eight offset-by-two col">
-        <p>Sometimes we will be running open tournaments. Usually the best f2p player wins full game (15$) and the
-            best VIP player wins 1 month VIP extension (5$).</p>
+    <h2>🗺️ Mappers League 🎭</h2>
+    <div id="timer"></div>
+    <!-- <h3>Ends in:</h3>
+    <h4 id="timer"></h4> -->
+    <!-- <h3>Map pool:</h3> -->
+    <!-- <h5>Dragon War - Darkest Hour - Freaks</h5> -->
+    <div class="six offset-by-three col">
+        <h6>Tournament duration: 1st to 10th day of every month.</h6>
+        <h6>Soon.</h6>
     </div>
+    <!-- <h3>Results:</h3> -->
+    <!-- <p>The best players across all leaderboards, updated every 10 mins.</p>  -->
 </div>
-<div class="row text-center">
-    <div class="eight offset-by-two col">
-        <p>More info on how to join and about next tournament can be found in <a
-                href="https://discord.gg/KEmyY8N">#tournaments</a> channel. </p>
-    </div>
-</div>
-<div class="row text-center">
-    <br>
-    <br>
-    <br>
-</div>
+
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/hmac-sha256.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/hmac-sha256.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/enc-base64.min.js"></script>
+<script type="text/javascript">
+
+    // function shuffleArray(array) {
+    //     for (let i = array.length - 1; i > 0; i--) {
+    //         const j = Math.floor(Math.random() * (i + 1));
+    //         [array[i], array[j]] = [array[j], array[i]];
+    //     }
+    // }
+    async function main()
+    {
+        SetTimer();
+
+        var t = "U2FsdGVkX18n+Uz1uB97JU15Va5bZASl6kXVcIyD6S8oEx3ANg6ywsCcW10y0iDMp0VM1RIB2p7gHzGGW0m+9QYdpBZpuo4RTWcM0PAVypo=";
+        var div = document.createElement("div");
+        div.className = "row text-center eight offset-by-two col";
+        let htmlString = '';
+
+        const tournamentsList = await (await fetch("game/tournamentsList.json")).json();
+        AddPrizing(tournamentsList);
+        AddRules();
+        await AddWinners(tournamentsList);
+
+        // div.insertAdjacentHTML('beforeend', '<br><br><br><h4>Previous tournaments:</h4>');
+        // div.insertAdjacentHTML('beforeend', '<a href="https://cdn.discordapp.com/attachments/595011119790161920/694668016109224067/859ace597e72b606381310ce0cd5dd34.png" target="_blank" >Monthly League March Test</a><br>');
+        // div.insertAdjacentHTML('beforeend', '<a href="tournamentsArchive/weekly1" >Weekly #1</a>');
+
+        document.getElementsByClassName("content")[0].appendChild(div);
+
+
+        function SetTimer()
+        {
+            var countDownDate;
+            var today = new Date();
+            // var today = new Date('April 30, 2020 22:00:00 GMT-01:00');
+            // var today = new Date('May 1, 2020 00:00:00 GMT+01:00');
+            // var today = new Date('April 30, 2020 24:00:00 GMT-01:00');
+            // var today = new Date('May 1, 2020 02:00:00 GMT+01:00');
+            var startDay = 1;
+            var endDay = 11;
+            var prefix;
+            if (today.getUTCDate() >= startDay && today.getUTCDate() < endDay)
+            {
+                prefix = "Ends in: ";
+                var countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), endDay);
+            }
+            else
+            {
+                prefix = "Starts in: ";
+                var countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, startDay);
+            }
+            // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
+            // var countDownDate = new  Date(tournamentsList.tournaments[0].end).getTime();
+            // var countDownDate = new Date("Mon 11, 2019 12:00:00").getTime();
+
+            var timerElement = document.getElementById("timer");
+            if (timerElement)
+            {
+                var x = setInterval(UpdateTime, 1000);
+                UpdateTime();
+                function UpdateTime()
+                {
+                    var now = new Date().getTime();
+                    var distance = countDownDate - now;
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+                    // if (distance < 0)
+                    // {
+                    //     clearInterval(x);
+                    //     timerElement.innerHTML = "Ended";
+                    // }
+                    // else
+                    timerElement.innerHTML = prefix + days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+                }
+            }
+        }
+
+        function AddPrizing(tList)
+        {
+            div.insertAdjacentHTML('beforeend', '<h3>Total Prizing:</h3>');
+            div.insertAdjacentHTML('beforeend', `40$ + 6 VIPS (50$)`);
+            div.insertAdjacentHTML('beforeend', `<br>`);
+        }
+
+        async function AddWinners(tList)
+        {
+            div.insertAdjacentHTML('beforeend', '<h3>Ranking:</h3>');
+            div.insertAdjacentHTML('beforeend', `(resets on tournament start)<br>`);
+
+            try
+            {
+                htmlString += '<table class="expand hoverable" id="table-example"> \
+            <thead>\
+              <tr>\
+                <th>Place</th>\
+                <th>Player</th>\
+                <th>Map</th>\
+                <th>Prize</th>\
+              </tr>\
+            </thead>\
+            <tbody>';
+                // <th>Score</th>\
+                // <th>Prize</th>\
+                // <th>Country</th>\
+
+                // topPlayers = await response.json();
+                // topPlayers = JSON.parse('[["XVoIR",3000],["Brumor",2951,"https://youtu.be/PbpKACOuSXo?t=1552"],["HoundFPS",2929],["jwun",2902],["FallenAng3L",2885],["meeko",2862],["Naoki",2856],["Nayllo",2820],["XensKittyCat",2771],["autumns",2745]]');
+                // var winnersJson = JSON.parse(tournamentsList.tournaments[1].winnersJson);
+                // var winnersJsonString = await (await fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vTovzEFnaeJtKjxwdWwQQwgxbPTH_9_UnLbxWTnJruUnSAKFGBm9bQtbZw87EYCLH7FsbdVAVBMAxRH/pub?output=tsv")).text();
+                // var winnersJsonString = `Name	SteamId	Country	Score
+                // Leviathan	76561198084022633	US	468
+                // Pyroxia	76561198133585151	TR	466
+                // Sosik	76561198093456452	US	465
+                // GlycerinDawn	76561198864176237	US	459
+                // Nayllo	76561198165098634		457
+                // Merryeliot[FR]	76561198106672504		447
+                // Kamyker	76561198053936045	PL	445
+                // ImSorry	76561198141855723		411
+                // FallenMystery15	76561198844204184		396
+                // KNIGHT	76561198985195690		395
+                // eck	76561198097149970	US	379
+                // djmon007	76561198119137613	US	377
+                // Rancid Ranch	76561198434726804	US	368
+                // Syssnow	76561198219523784	FR	363`;
+                var savedId = "MappingLeague";
+                async function Dl()
+                {
+                    var accessData = GrtAzureAccessData("MappingLeagueTsv", "Leaderboard");
+                    var fetched = await fetch(accessData.Url, { headers: accessData.Headers });
+                    var winnersJsonString = await fetched.text();
+                    var leagueSaved = JSON.parse(winnersJsonString);
+                    leagueSaved.Date = new Date();
+                    window.localStorage.setItem(savedId, JSON.stringify(leagueSaved));
+                    return leagueSaved;
+                }
+
+                // window.localStorage.removeItem(savedId);
+                var leagueSaved = JSON.parse(window.localStorage.getItem(savedId));
+                if (!leagueSaved
+                    || !leagueSaved.hasOwnProperty("Value")
+                    || !leagueSaved.hasOwnProperty("Date"))
+                    leagueSaved = await Dl();
+                else if (leagueSaved.hasOwnProperty("Date")
+                    && new Date().getTime() > new Date(leagueSaved.Date).getTime() + 1 * 60000)
+                    leagueSaved = await Dl();
+
+
+                console.log(leagueSaved);
+                // for (var key in accessData.Headers)
+                // {
+                //     var value = accessData.Headers[key];
+
+                //     console.log(key + ": " + value);
+                // }
+                // var winnersJsonString = await (await fetch(CryptoJS.AES.decrypt(t, 'https://beataim.com/leaderboard.json').toString(CryptoJS.enc.Utf8))).text();
+                // localStorage.setItem('myCat', 'Tom');
+                // var winnersJsonString = await (await fetch("http://localhost:7071/api/GetMonthlyLeague")).text();
+                // console.log(winnersJsonString);
+                var data = d3.tsvParse(leagueSaved.Value);
+                for (let i = 0; i < data.length; i++)
+                {
+                    var place;
+                    switch (i)
+                    {
+                        case 0:
+                            place = "🥇";
+                            break;
+                        case 1:
+                            place = "🥈";
+                            break;
+                        case 2:
+                            place = "🥉";
+                            break;
+                        default:
+                            place = i + 1;
+                    }
+
+                    htmlString += `<tr><td>${(place)}</td>` +
+                        `<td>${(data[i].MapperName || '-')}</a></td>` +
+                        `<td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${(data[i].MapId || '-')}">${(data[i].MapTitle || '-')}</a></td>` +
+                        `<td>${(leagueSaved.Prizes[i] || "")}</td>`
+
+                    // var country = data[i].Country
+                    // if (country)
+                    // {
+                    //     if (country == "us")
+                    //         htmlString += `<td><i class="em em-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`
+                    //     else
+                    //         htmlString += `<td><i class="em em-flag-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`
+                    // }
+                    // else
+                    //     htmlString += `<td></td></tr>`
+                    htmlString += `</tr>`
+
+                }
+
+            } catch (error)
+            {
+                htmlString += 'error :(';
+                console.log(error)
+            }
+            htmlString += '</tbody>\
+          </table>';
+            div.insertAdjacentHTML('beforeend', htmlString);
+        }
+
+        function AddRules()
+        {
+            div.insertAdjacentHTML('beforeend', '<br><h3>Rules:</h3>');
+            div.insertAdjacentHTML('beforeend', `<p>Valid paypal account is required to redeem the winnings.</p>`);
+            div.insertAdjacentHTML('beforeend', `<p>Scoring may change during tournament, for now it's set to ranked by trending since month start.</p>`);
+        }
+    }
+    main();
+
+
+
+
+</script>
 
 </div>
 <div class="footer " style="font-size: 10px">
