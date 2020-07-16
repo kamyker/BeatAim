@@ -165,12 +165,12 @@
     <!-- <h3>Map pool:</h3> -->
     <!-- <h5>Dragon War - Darkest Hour - Freaks</h5> -->
     <div class="six offset-by-three col">
-        <h6>Tournament duration: 1st to 15th day of every month.</h6>
+        <h6>Maps submission: 1st to 15th day of every month.</h6>
+        <h6>Tournament duration: 15th to 31th day of every month.</h6>
         <h6>To keep free maps rotation fresh we invite all players to enter Mapping League. Create a map, post it to
-            <a href="https://discord.gg/z4F3qS6">#mapping-league discord channel</a> to promote it and let everyone know
-            you want to win :). We will play
-            and rate it
-            to potentially increase its ranking.</h6>
+            <a href="https://discord.gg/z4F3qS6">#mapping-league discord channel</a> during "Maps submission" period.
+            Selected maps will be added to maps rotation and and Mapping League. Ranking below shows the most liked maps
+            this month.</h6>
     </div>
     <!-- <h3>Results:</h3> -->
     <!-- <p>The best players across all leaderboards, updated every 10 mins.</p>  -->
@@ -221,20 +221,37 @@
             // var today = new Date('May 1, 2020 00:00:00 GMT+01:00');
             // var today = new Date('April 30, 2020 24:00:00 GMT-01:00');
             // var today = new Date('May 1, 2020 02:00:00 GMT+01:00');
-            var startDay = 1;
-            // var endDay = 11;
-            var endDay = 17;
+
+            // var startDay = 1;
+            // var endDay = 17;
+            // var prefix;
+            // if (today.getUTCDate() >= startDay && today.getUTCDate() < endDay)
+            // {
+            //     prefix = "Ends in: ";
+            //     var countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), endDay);
+            // }
+            // else
+            // {
+            //     prefix = "Starts in: ";
+            //     var countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, startDay);
+            // }
+
+
+            var startDay = 17;
             var prefix;
-            if (today.getUTCDate() >= startDay && today.getUTCDate() < endDay)
+            if (today.getUTCDate() >= startDay && today.getUTCMonth() != 3)//   && today.getMonth() > 2)
             {
                 prefix = "Ends in: ";
-                var countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), endDay);
+                var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
+                countDownDate = lastDayOfMonth;
             }
             else
             {
                 prefix = "Starts in: ";
-                var countDownDate = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, startDay);
+                var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, startDay);
+                countDownDate = eighthDayOfMonth;
             }
+
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
             // var countDownDate = new  Date(tournamentsList.tournaments[0].end).getTime();
             // var countDownDate = new Date("Mon 11, 2019 12:00:00").getTime();
