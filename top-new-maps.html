@@ -168,7 +168,8 @@
         <h6>Maps submission: 1st to 15th day of every month.</h6>
         <h6>Tournament duration: 15th to 31th day of every month.</h6>
         <h6>To keep free maps rotation fresh we invite all players to enter Mapping League. Create a map and post it to
-            <a href="https://discord.gg/z4F3qS6">#mapping-league discord channel</a> during "Maps submission" period.
+            <a href="https://discord.gg/z4F3qS6">#mapping-league discord channel</a> during "Maps submission"
+            period.<br><br>
             You, players select the winners! Simply react with ❤️ on discord to your favorite maps. Our discord bot
             updates ranking below every 5 mins.
         </h6>
@@ -304,6 +305,7 @@
                 <th>Player</th>\
                 <th>Map</th>\
                 <th>Prize</th>\
+                <th>Likes</th>\
               </tr>\
             </thead>\
             <tbody>';
@@ -385,8 +387,9 @@
 
                     htmlString += `<tr><td>${(place)}</td>` +
                         `<td>${(data[i].MapperName || '-')}</a></td>` +
-                        `<td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${(data[i].MapId || '-')}">${(data[i].MapTitle || '-')}</a></td>` +
-                        `<td>${(leagueSaved.Prizes[i] || "")}</td>`
+                        `<td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${(data[i].MapId || '-')}"><img src="${(data[i].ImgUrl || 'https://beataim.com/favicon.ico')}" alt="" width="26" height="26" style="vertical-align:middle">&nbsp;&nbsp;${(data[i].MapTitle || '-')}</a></td>` +
+                        `<td>${(leagueSaved.Prizes[i] || "")}</td>` +
+                        `<td>${(data[i].VotesUp || "")} ❤️</td>`
 
                     // var country = data[i].Country
                     // if (country)
