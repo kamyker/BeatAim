@@ -165,9 +165,9 @@
     <!-- <h3>Map pool:</h3> -->
     <!-- <h5>Dragon War - Darkest Hour - Freaks</h5> -->
     <div class="six offset-by-three col">
-        <h6>Tournament duration: 15th to last day of every month.</h6>
-        <h6>15 non-vip leaderboards (Simple maps) are combined together to reveal top 100 best players in Beat Aim. It's
-            a good idea to pick 15 maps from whole map pool and ignore the rest to save time.
+        <h6>Tournament duration: 1th - 20th every month.</h6>
+        <h6>15 non-vip leaderboards (Simple maps) are combined together to reveal top 100 best players in Beat Aim. Pick
+            your favorite 15 maps from whole map pool, play only them and ignore the rest to save some time.
         </h6>
     </div>
     <!-- <h3>Results:</h3> -->
@@ -230,18 +230,18 @@
             // var today = new Date('April 30, 2020 24:00:00 GMT-01:00');
             // var today = new Date('May 1, 2020 02:00:00 GMT+01:00');
             // var startDay = 11;
-            var startDay = 17;
+            var endDay = 20;
             var prefix;
-            if (today.getUTCDate() >= startDay && today.getUTCMonth() != 3)//   && today.getMonth() > 2)
+            if (today.getUTCDate() >= endDay)//   && today.getMonth() > 2)
             {
-                prefix = "Ends in: ";
+                prefix = "Starts in: ";
                 var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
                 countDownDate = lastDayOfMonth;
             }
             else
             {
-                prefix = "Starts in: ";
-                var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, startDay);
+                prefix = "Ends in: ";
+                var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, endDay);
                 countDownDate = eighthDayOfMonth;
             }
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
