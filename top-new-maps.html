@@ -239,17 +239,17 @@
             // }
 
 
-            var startDay = 17;
+            var startDay = 20;
             var prefix;
-            if (today.getUTCDate() >= startDay && today.getUTCMonth() != 3)//   && today.getMonth() > 2)
+            if (today.getUTCDate() >= startDay)//   && today.getMonth() > 2)
             {
-                prefix = "Ends in: ";
+                prefix = "Maps Submissions phase ends in: ";
                 var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
                 countDownDate = lastDayOfMonth;
             }
             else
             {
-                prefix = "Starts in: ";
+                prefix = "Voting phase ends in: ";
                 var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, startDay);
                 countDownDate = eighthDayOfMonth;
             }
