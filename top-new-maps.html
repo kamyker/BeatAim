@@ -240,19 +240,19 @@
 
             var startDay = 21;
             var prefix;
+            prefix = "Starts in: ";
             if (today.getUTCDate() >= startDay)//   && today.getMonth() > 2)
             {
                 // prefix = "Maps Submissions phase ends in: ";
-                prefix = "Starts in: ";
-                var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
-                countDownDate = lastDayOfMonth;
+                // var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
+                var twDayOfNextMonth2 = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, startDay);
+                countDownDate = twDayOfNextMonth2;
             }
             else
             {
                 // prefix = "Voting phase ends in: ";
-                prefix = "Ends in: ";
-                var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, startDay);
-                countDownDate = eighthDayOfMonth;
+                var twDayOfNextMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, startDay);
+                countDownDate = twDayOfNextMonth;
             }
 
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
