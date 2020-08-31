@@ -165,12 +165,11 @@
     <!-- <h3>Map pool:</h3> -->
     <!-- <h5>Dragon War - Darkest Hour - Freaks</h5> -->
     <div class="six offset-by-three col">
-        <h6>Phase 1 - Maps submissions: 20th - 30th every month</h6>
-        <h6>Phase 2 - Voting: 1st - 20th every month</h6>
-        <h6>To keep free maps rotation fresh we invite all players to enter Mapping League. Create a map and post it to
-            <a href="https://discord.gg/z4F3qS6">#mapping-league discord channel</a> during "Maps submission"
-            period.<br><br>
-            You, players select the winners! Simply react with ❤️ on discord to your favorite maps. Our discord bot
+        <h6>Tournament duration: 1st - 20th every month</h6>
+        <h6>To keep free maps rotation fresh we invite everyone to enter Mapping League. Create a map and post it to
+            <a href="https://discord.gg/z4F3qS6">#mapping-league</a> discord channel.
+            You, players select the winners! Simply react with ❤️ and 👎 on discord to your favorite maps. Our discord
+            bot
             updates ranking below every 5 mins.
         </h6>
     </div>
@@ -243,13 +242,15 @@
             var prefix;
             if (today.getUTCDate() >= startDay)//   && today.getMonth() > 2)
             {
-                prefix = "Maps Submissions phase ends in: ";
+                // prefix = "Maps Submissions phase ends in: ";
+                prefix = "Starts in: ";
                 var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
                 countDownDate = lastDayOfMonth;
             }
             else
             {
-                prefix = "Voting phase ends in: ";
+                // prefix = "Voting phase ends in: ";
+                prefix = "Ends in: ";
                 var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, startDay);
                 countDownDate = eighthDayOfMonth;
             }
