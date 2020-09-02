@@ -42,3 +42,18 @@ function GenerateMasterKeyAuthorizationSignature(verb, resourceId, resourceType,
 
     return encodeURIComponent(`type=${keyType}&ver=${tokenVersion}&sig=${hashInBase64}`);
 }
+
+function GetCdnLinkCached(path)
+{
+    return `https://beataim.b-cdn.net/${path}`;
+}
+
+function GetCdnLinkCacheBusted(path)
+{
+    return `https://beataim.b-cdn.net/${path}?z=${new Date().getTime()}`;
+}
+
+function GetCdnLinkCacheBustedToOneMinute(path)
+{
+    return `https://beataim.b-cdn.net/${path}?z=${Math.trunc(new Date().getTime() / 1000 / 60)}`;
+}

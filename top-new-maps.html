@@ -165,13 +165,17 @@
     <!-- <h3>Map pool:</h3> -->
     <!-- <h5>Dragon War - Darkest Hour - Freaks</h5> -->
     <div class="six offset-by-three col">
-        <h6>Tournament duration: 20th - 20th (one month) every month)</h6>
+        <h6>Tournament duration: 20th - 20th<br>(one month)every month</h6>
         <h6>To keep free maps rotation fresh we invite everyone to enter Mapping League. Create a map and post it to
             <a href="https://discord.gg/z4F3qS6">#mapping-league</a> discord channel.
             You, players select the winners! Simply react with ❤️ and 👎 on discord to your favorite maps. Our discord
             bot
             updates ranking below every 5 mins.
         </h6>
+        <br><br>
+        <h3>Total Prizing:</h3>
+        <span id="totalPrize">Loading...</span>
+        <br><br><br>
     </div>
     <!-- <h3>Results:</h3> -->
     <!-- <p>The best players across all leaderboards, updated every 10 mins.</p>  -->
@@ -203,7 +207,6 @@
         let htmlString = '';
 
         const tournamentsList = await (await fetch("game/tournamentsList.json")).json();
-        AddPrizing(tournamentsList);
         AddRules();
         await AddWinners(tournamentsList);
 
@@ -285,13 +288,6 @@
             }
         }
 
-        function AddPrizing(tList)
-        {
-            div.insertAdjacentHTML('beforeend', '<h3>Total Prizing:</h3>');
-            div.insertAdjacentHTML('beforeend', `40$ + 6 VIPS (30$)`);
-            div.insertAdjacentHTML('beforeend', `<br>`);
-        }
-
         async function AddWinners(tList)
         {
             div.insertAdjacentHTML('beforeend', '<h3>Ranking:</h3>');
@@ -335,13 +331,26 @@
                 var savedId = "MappingLeague";
                 async function Dl()
                 {
-                    var accessData = GrtAzureAccessData("MappingLeagueTsv", "Leaderboard");
-                    var fetched = await fetch(accessData.Url, { headers: accessData.Headers });
-                    var winnersJsonString = await fetched.text();
-                    var leagueSaved = JSON.parse(winnersJsonString);
+                    var leagueSaved = {};
                     leagueSaved.Date = new Date();
+
+                    var fetched = await fetch(GetCdnLinkCacheBustedToOneMinute("mappingLeague.tsv"));
+                    leagueSaved.Value = await fetched.text();
+
+                    fetched = await fetch(GetCdnLinkCacheBustedToOneMinute("mappingLeaguePrizes.json"));
+                    leagueSaved.Prizing = JSON.parse(await fetched.text());
+
                     window.localStorage.setItem(savedId, JSON.stringify(leagueSaved));
                     return leagueSaved;
+
+
+                    // var accessData = GrtAzureAccessData("MappingLeagueTsv", "Leaderboard");
+                    // var fetched = await fetch(accessData.Url, { headers: accessData.Headers });
+                    // var winnersJsonString = await fetched.text();
+                    // var leagueSaved = JSON.parse(winnersJsonString);
+                    // leagueSaved.Date = new Date();
+                    // window.localStorage.setItem(savedId, JSON.stringify(leagueSaved));
+                    // return leagueSaved;
                 }
 
                 // window.localStorage.removeItem(savedId);
@@ -355,7 +364,7 @@
                     leagueSaved = await Dl();
 
 
-                console.log(leagueSaved);
+                document.getElementById("totalPrize").textContent = leagueSaved.Prizing.TotalPrize;
                 // for (var key in accessData.Headers)
                 // {
                 //     var value = accessData.Headers[key];
@@ -388,7 +397,7 @@
                     htmlString += `<tr><td>${(place)}</td>` +
                         `<td>${(data[i].MapperName || '-')}</a></td>` +
                         `<td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${(data[i].MapId || '-')}"><img src="${(data[i].ImgUrl || 'https://beataim.com/favicon.ico')}" alt="" width="26" height="26" style="vertical-align:middle">&nbsp;&nbsp;${(data[i].MapTitle || '-')}</a></td>` +
-                        `<td>${(leagueSaved.Prizes[i] || "")}</td>` +
+                        `<td>${(leagueSaved.Prizing.Prizes[i] || "")}</td>` +
                         `<td>${(data[i].VotesUp || "")} ❤️</td>`
 
                     // var country = data[i].Country

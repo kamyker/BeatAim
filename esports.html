@@ -169,6 +169,10 @@
         <h6>15 non-vip leaderboards (Simple maps) are combined together to reveal top 100 best players in Beat Aim. Pick
             your favorite 15 maps from whole map pool, play only them and ignore the rest to save some time.
         </h6>
+        <br><br>
+        <h3>Total Prizing:</h3>
+        <span id="totalPrize">Loading...</span>
+        <br><br><br>
     </div>
     <!-- <h3>Results:</h3> -->
     <!-- <p>The best players across all leaderboards, updated every 10 mins.</p>  -->
@@ -199,7 +203,6 @@
         let htmlString = '';
 
         const tournamentsList = await (await fetch("game/tournamentsList.json")).json();
-        AddPrizing(tournamentsList);
         AddRules();
         //div.insertAdjacentHTML('beforeend', `<br><br><br><br>`);
         await AddWinners(tournamentsList);
@@ -274,12 +277,6 @@
             }
         }
 
-        function AddPrizing(tList)
-        {
-            div.insertAdjacentHTML('beforeend', '<h3>Total Prizing:</h3>');
-            div.insertAdjacentHTML('beforeend', `60$ + 10 VIPS (50$)`);
-            div.insertAdjacentHTML('beforeend', `<br>`);
-        }
 
         async function AddWinners(tList)
         {
@@ -322,11 +319,17 @@
 
                 async function Dl()
                 {
-                    var accessData = GrtAzureAccessData("MonthlyLeagueTsv", "Leaderboard");
-                    var fetched = await fetch(accessData.Url, { headers: accessData.Headers });
-                    var winnersJsonString = await fetched.text();
-                    var leagueSaved = JSON.parse(winnersJsonString);
+                    // var accessData = GrtAzureAccessData("MonthlyLeagueTsv", "Leaderboard");
+                    // var fetched = await fetch(accessData.Url, { headers: accessData.Headers });
+                    var leagueSaved = {};
                     leagueSaved.Date = new Date();
+
+                    var fetched = await fetch(GetCdnLinkCacheBustedToOneMinute("monthlyLeague.tsv"));
+                    leagueSaved.Value = await fetched.text();
+
+                    fetched = await fetch(GetCdnLinkCacheBustedToOneMinute("monthlyLeaguePrizes.json"));
+                    leagueSaved.Prizing = JSON.parse(await fetched.text());
+
                     window.localStorage.setItem("MonthlyLeague", JSON.stringify(leagueSaved));
                     return leagueSaved;
                 }
@@ -342,6 +345,7 @@
                     leagueSaved = await Dl();
 
 
+                document.getElementById("totalPrize").textContent = leagueSaved.Prizing.TotalPrize;
                 // console.log(leagueSaved);
                 // for (var key in accessData.Headers)
                 // {
@@ -375,7 +379,7 @@
                     htmlString += `<tr><td>${(place)}</td>` +
                         `<td>${(data[i].Name || '-')}</td>` +
                         `<td>${(data[i].Score || '-')}</td>` +
-                        `<td>${(leagueSaved.Prizes[i] || "")}</td>`// tList.tournaments[tList.tournaments.length - 1].prizePerPlace[i] ?? "")}</td>`
+                        `<td>${(leagueSaved.Prizing.Prizes[i] || "")}</td>`// tList.tournaments[tList.tournaments.length - 1].prizePerPlace[i] ?? "")}</td>`
                     // if (data[i].link)
                     // {
                     //     var site = "YouTube"

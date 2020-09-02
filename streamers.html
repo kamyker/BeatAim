@@ -169,6 +169,10 @@
         <h6>Watch time of every Beat Aim streamer is added to the leaderboard below every 5 minutes. Currently only
             Twitch
             is supported. Let us know if you'd like to see other platforms.</h6>
+        <br><br>
+        <h3>Total Prizing:</h3>
+        <span id="totalPrize">Loading...</span>
+        <br><br><br>
     </div>
     <!-- <h3>Results:</h3> -->
     <!-- <p>The best players across all leaderboards, updated every 10 mins.</p>  -->
@@ -193,14 +197,11 @@
     {
         SetTimer();
 
-        var t = "U2FsdGVkX18n+Uz1uB97JU15Va5bZASl6kXVcIyD6S8oEx3ANg6ywsCcW10y0iDMp0VM1RIB2p7gHzGGW0m+9QYdpBZpuo4RTWcM0PAVypo=";
         var div = document.createElement("div");
         div.className = "row text-center eight offset-by-two col";
         let htmlString = '';
 
-        const tournamentsList = await (await fetch("game/tournamentsList.json")).json();
-        AddPrizing(tournamentsList);
-        await AddWinners(tournamentsList);
+        await AddWinners();
 
         AddRules();
 
@@ -274,13 +275,6 @@
             }
         }
 
-        function AddPrizing(tList)
-        {
-            div.insertAdjacentHTML('beforeend', '<br><br><h3>Total Prizing:</h3>');
-            div.insertAdjacentHTML('beforeend', `100$ + 8 VIPS (40$) + 10 BA keys (150$)`);
-            div.insertAdjacentHTML('beforeend', `<br><br><br><br>`);
-        }
-
         async function AddWinners(tList)
         {
             div.insertAdjacentHTML('beforeend', '<h3>Ranking:</h3>');
@@ -301,13 +295,25 @@
 
                 async function Dl()
                 {
-                    var accessData = GrtAzureAccessData("TwitchLeagueTsv", "Leaderboard");
-                    var fetched = await fetch(accessData.Url, { headers: accessData.Headers });
-                    var winnersJsonString = await fetched.text();
-                    var leagueSaved = JSON.parse(winnersJsonString);
+                    var leagueSaved = {};
                     leagueSaved.Date = new Date();
+
+                    var fetched = await fetch(GetCdnLinkCacheBustedToOneMinute("twitchLeague.tsv"));
+                    leagueSaved.Value = await fetched.text();
+
+                    fetched = await fetch(GetCdnLinkCacheBustedToOneMinute("twitchLeaguePrizes.json"));
+                    leagueSaved.Prizing = JSON.parse(await fetched.text());
+
                     window.localStorage.setItem("TwitchLeagueTsv", JSON.stringify(leagueSaved));
                     return leagueSaved;
+
+                    // var accessData = GrtAzureAccessData("TwitchLeagueTsv", "Leaderboard");
+                    // var fetched = await fetch(accessData.Url, { headers: accessData.Headers });
+                    // var winnersJsonString = await fetched.text();
+                    // var leagueSaved = JSON.parse(winnersJsonString);
+                    // leagueSaved.Date = new Date();
+                    // window.localStorage.setItem("TwitchLeagueTsv", JSON.stringify(leagueSaved));
+                    // return leagueSaved;
                 }
 
                 // window.localStorage.removeItem("TwitchLeagueTsv");
@@ -320,8 +326,10 @@
                     && new Date().getTime() > new Date(leagueSaved.Date).getTime() + 1 * 60000)
                     leagueSaved = await Dl();
 
+                document.getElementById("totalPrize").textContent = leagueSaved.Prizing.TotalPrize;
+
                 var data = d3.tsvParse(leagueSaved.Value);
-                for (let i = 0; i < data.length || i < leagueSaved.Prizes.length; i++)
+                for (let i = 0; i < data.length || i < leagueSaved.Prizing.Prizes.length; i++)
                 {
                     var place;
                     switch (i)
@@ -349,11 +357,11 @@
 
                     watchTimeText += `${watchTimeM}min`
                     watchTimeText += `</td>`
-
+                    console.log(leagueSaved);
                     htmlString += `<tr><td>${(place)}</td>` +
                         `<td>${(data[i]?.Name || '-')}</td>` +
                         watchTimeText +
-                        `<td>${(leagueSaved?.Prizes[i] || "")}</td>`;
+                        `<td>${(leagueSaved?.Prizing.Prizes[i] || "")}</td>`;
 
                     var country = data[i]?.Country;
                     if (country)
@@ -367,11 +375,6 @@
                     }
                     else
                         htmlString += `<td></td></tr>`;
-                }
-                if (data.length < leagueSaved.Prizes.length)
-                {
-
-
                 }
 
             } catch (error)
