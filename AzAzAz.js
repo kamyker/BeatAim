@@ -1,6 +1,6 @@
 function GrtAzureAccessData(documentId, partitionKey)
 {
-    var readOnlyKey = "tmbHe9onXQ5JUXd41XJG7SLKlvnW9SRccIgrwxGQT61009KTsarNJf1CyaDFJakQj55psA34K8AkW1uyIx2TJA==";
+    var readOnlyKey = '';
     var date = new Date().toUTCString()
 
     var collectionId = "main";
@@ -55,5 +55,17 @@ function GetCdnLinkCacheBusted(path)
 
 function GetCdnLinkCacheBustedToOneMinute(path)
 {
-    return `https://beataim.b-cdn.net/${path}?z=${Math.trunc(new Date().getTime() / 1000 / 60)}`;
+    return `https://beataim.b-cdn.net/${path}?z=${getTotalMinutesUTC()}`;
+}
+
+function convertDateToUTC(date)
+{
+    return Date.UTC(date.getUTCFullYear(), date.getUTCMonth(),
+        date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(),
+        date.getUTCSeconds());
+}
+
+function getTotalMinutesUTC()
+{
+    return Math.round(convertDateToUTC(new Date()) / 1000 / 60 + 62135596800000 / 1000 / 60); //in C# version
 }
