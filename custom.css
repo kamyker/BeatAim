@@ -137,6 +137,29 @@ div.share-links i.fa {
 }
 
 
+  .yt {
+    content: url(/imgs/youtube.png);
+    width: 26px;
+    height: 18px;
+  }
+  .twitch {
+    content: url(/imgs/twitch.png);
+    width: 18px;
+    height: 20px;
+  }
+  .twitter {
+    content: url(/imgs/twitterLogo.png);
+    width: 20px;
+    height: 20px;
+  }
+
+  .pannicked {
+    content: url(/imgs/partners/pannicked.png);
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+  }
+
 .steamwidget-conteiner{
   height: 190px;
 }
