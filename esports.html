@@ -68,12 +68,9 @@
         <a href="https://store.steampowered.com/newshub/app/1142220" target="_blank"
             onclick="meshki.closeSidenav()">News</a>
         <a href="/roadmap" onclick="meshki.closeSidenav()">Roadmap</a>
-        <!-- <a href="make-account.html" onclick="meshki.closeSidenav()">Alpha sign up</a> -->
         <a href="/esports" onclick="meshki.closeSidenav()">Esports League</a>
         <a href="/streamers" onclick="meshki.closeSidenav()">Streamers League</a>
         <a href="/top-new-maps" onclick="meshki.closeSidenav()">Mapping League</a>
-        <!-- <a href="redeem-key.html" onclick="meshki.closeSidenav()">Redeem alpha key</a> -->
-        <a href="/extend-vip" onclick="meshki.closeSidenav()">Extend VIP</a>
         <a href="/partners" onclick="meshki.closeSidenav()">Partners</a>
         <!-- <a href="/referral">Referrals</a> -->
     </div>
@@ -113,7 +110,6 @@
             <li><a href="/streamers">Streamers League</a></li>
             <li><a href="/top-new-maps">Mapping League</a></li>
             <!-- <li><a href="redeem-key.html">Redeem alpha key</a></li> -->
-            <li><a href="/extend-vip">Extend VIP</a></li>
             <li><a href="/partners">Partners</a></li>
         </div>
         <!-- <li><a href="https://github.com/Borderliner/Meshki/blob/master/CHANGELOG.md">News</a></li>
@@ -235,20 +231,20 @@
             // var today = new Date('April 30, 2020 24:00:00 GMT-01:00');
             // var today = new Date('May 1, 2020 02:00:00 GMT+01:00');
             // var startDay = 11;
-            var endDay = 21;
+            // var endDay = 21;
             var prefix;
-            if (today.getUTCDate() >= endDay)//   && today.getMonth() > 2)
-            {
-                prefix = "Starts in: ";
-                var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
-                countDownDate = lastDayOfMonth;
-            }
-            else
-            {
-                prefix = "Ends in: ";
-                var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 0, endDay);
-                countDownDate = eighthDayOfMonth;
-            }
+            // if (today.getUTCDate() >= endDay)//   && today.getMonth() > 2)
+            // {
+            //     prefix = "Starts in: ";
+            //     var lastDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 1);
+            //     countDownDate = lastDayOfMonth;
+            // }
+            // else
+            // {
+            prefix = "Ends in: ";
+            var eighthDayOfMonth = Date.UTC(today.getUTCFullYear(), today.getUTCMonth() + 1, 0);
+            countDownDate = eighthDayOfMonth;
+            // }
             // var countDownDate = new Date(tournamentsList.tournaments[tournamentsList.tournaments.length - 1].end).getTime();
             // var countDownDate = new  Date(tournamentsList.tournaments[0].end).getTime();
             // var countDownDate = new Date("Mon 11, 2019 12:00:00").getTime();
