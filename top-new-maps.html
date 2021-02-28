@@ -164,11 +164,8 @@
     <!-- <h5>Dragon War - Darkest Hour - Freaks</h5> -->
     <div class="six offset-by-three col">
         <h6>Tournament duration: 1st - 31st of every month</h6>
-        <h6>To keep free maps rotation fresh we invite everyone to enter Mapping League. Create a map and post it to
-            <a href="https://discord.gg/z4F3qS6">#mapping-league</a> discord channel.
-            You, players select the winners! Simply react with ❤️ and 👎 on discord to your favorite maps. Our discord
-            bot
-            updates ranking below every 5 mins.
+        <h6>Every week few Workshop maps are added to ranked pool. They are picked based on in-game upvotes or playtime.
+            Every mapper gets 1 point in Mapping League for every map added.
         </h6>
         <br><br>
         <h3>Total Prizing:</h3>
@@ -205,8 +202,8 @@
         let htmlString = '';
 
         const tournamentsList = await (await fetch("game/tournamentsList.json")).json();
-        AddRules();
         await AddWinners(tournamentsList);
+        AddRules();
 
         // div.insertAdjacentHTML('beforeend', '<br><br><br><h4>Previous tournaments:</h4>');
         // div.insertAdjacentHTML('beforeend', '<a href="https://cdn.discordapp.com/attachments/595011119790161920/694668016109224067/859ace597e72b606381310ce0cd5dd34.png" target="_blank" >Monthly League March Test</a><br>');
@@ -297,9 +294,9 @@
               <tr>\
                 <th>Place</th>\
                 <th>Player</th>\
-                <th>Map</th>\
                 <th>Prize</th>\
-                <th>Likes</th>\
+                <th>Points</th>\
+                <th>Trend</th>\
               </tr>\
             </thead>\
             <tbody>';
@@ -394,9 +391,10 @@
 
                     htmlString += `<tr><td>${(place)}</td>` +
                         `<td>${(data[i].MapperName || '-')}</a></td>` +
-                        `<td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${(data[i].MapId || '-')}"><img src="${(data[i].ImgUrl || 'https://beataim.com/favicon.ico')}" alt="" width="26" height="26" style="vertical-align:middle">&nbsp;&nbsp;${(data[i].MapTitle || '-')}</a></td>` +
+                        // `<td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${(data[i].MapId || '-')}"><img src="${(data[i].ImgUrl || 'https://beataim.com/favicon.ico')}" alt="" width="26" height="26" style="vertical-align:middle">&nbsp;&nbsp;${(data[i].MapTitle || '-')}</a></td>` +
                         `<td>${(leagueSaved.Prizing.Prizes[i] || "")}</td>` +
-                        `<td>${(data[i].VotesUp || "")} ❤️</td>`
+                        `<td>${(data[i].Points || "")} 🎼</td>` +
+                        `<td>${(data[i].Arrow || "")}</td>`
 
                     // var country = data[i].Country
                     // if (country)
