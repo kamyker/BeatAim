@@ -4,7 +4,7 @@ Store,ストア
 Inventory,インベントリ
 Battle Pass,バトルパス
 Simple,シンプル
-Challenges,
+Challenges,チャレンジ
 Generator,ジェネレータ
 Workshop,
 Ranking,ランキング
@@ -47,37 +47,36 @@ Other,その他
 Credits,クレジット
 Subscribe,
 Unsubscribe,
-Scaled,
-Exact,
-Diffculty Tags,
-Small Targets,
-Big Targets,
-Infrequent,
-Rapid,
-Vertical,
-Horizontal,
-Spaced,
-Crowded,
-Tracking Only,
-No Tracking,
-Wide Area,
-Narrow Area,
-Reflex,
-Arrows Only,
-Show maps with music on top,
-Other,
-More,
-Gun model by ,
-Open,
-Download,
-Cancel,
-Quit to menu,
-Do you really want to quit to menu?,
-Yes,
-No,
-VIP Perks,
-1 month,
-3 months,
-access to map generator with any music,
-priority support and founder role on discord,
-discord,
+Scaled,縮尺
+Exact,正確な
+Diffculty Tags,難易度タグ
+Small Targets,小ターゲット
+Big Targets,大きなターゲット
+Infrequent,インフリークエント
+Rapid,ラピッド
+Vertical,バーティカル
+Horizontal,ホリゾンタル
+Spaced,スペースド
+Crowded,クラウデッド
+Tracking Only,トラッキングのみ
+No Tracking,トラッキングなし
+Wide Area,ワイドエリア
+Narrow Area,ナローエリア
+Reflex,リフレックス
+Arrows Only,矢印だけ
+Show maps with music on top,音楽が上にあるマップを表示する
+More,続きを読む
+Gun model by ,武器モデラー：
+Open,開ける
+Download,ダウンロード
+Cancel,キャンセル
+Quit to menu,メニューを終了
+Do you really want to quit to menu?,本当にメニューを終了しますか？
+Yes,はい
+No,いいえ
+VIP Perks,VIP 特典
+1 month,1ヶ月間
+3 months,3ヶ月間
+access to map generator with any music,どんな音楽でもマップジェネレータのアクセス
+priority support and founder role on discord,Discordに優先サポートと「Founder」役割
+discord,Discord
