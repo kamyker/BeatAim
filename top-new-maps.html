@@ -205,6 +205,7 @@
         await AddWinners(tournamentsList);
         AddRules();
 
+        div.insertAdjacentHTML('beforeend', '<br><br><br><a href="https://discord.gg/suKsKjfgyc" target="_blank" ><h4>Previous tournaments</h4></a>');
         // div.insertAdjacentHTML('beforeend', '<br><br><br><h4>Previous tournaments:</h4>');
         // div.insertAdjacentHTML('beforeend', '<a href="https://cdn.discordapp.com/attachments/595011119790161920/694668016109224067/859ace597e72b606381310ce0cd5dd34.png" target="_blank" >Monthly League March Test</a><br>');
         // div.insertAdjacentHTML('beforeend', '<a href="tournamentsArchive/weekly1" >Weekly #1</a>');
@@ -371,7 +372,7 @@
                 // var winnersJsonString = await (await fetch("http://localhost:7071/api/GetMonthlyLeague")).text();
                 // console.log(winnersJsonString);
                 var data = d3.tsvParse(leagueSaved.Value);
-                for (let i = 0; i < data.length; i++)
+                for (let i = 0; i < data.length || i < leagueSaved.Prizing.Prizes.length; i++)
                 {
                     var place;
                     switch (i)
@@ -390,11 +391,11 @@
                     }
 
                     htmlString += `<tr><td>${(place)}</td>` +
-                        `<td>${(data[i].MapperName || '-')}</a></td>` +
+                        `<td>${(data[i]?.MapperName || '-')}</a></td>` +
                         // `<td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=${(data[i].MapId || '-')}"><img src="${(data[i].ImgUrl || 'https://beataim.com/favicon.ico')}" alt="" width="26" height="26" style="vertical-align:middle">&nbsp;&nbsp;${(data[i].MapTitle || '-')}</a></td>` +
                         `<td>${(leagueSaved.Prizing.Prizes[i] || "")}</td>` +
-                        `<td>${(data[i].Points || "")} 🎼</td>` +
-                        `<td>${(data[i].Arrow || "")}</td>`
+                        `<td>${(data[i]?.Points || "")} 🎼</td>` +
+                        `<td>${(data[i]?.Arrow || "")}</td>`
 
                     // var country = data[i].Country
                     // if (country)
@@ -424,6 +425,7 @@
         {
             div.insertAdjacentHTML('beforeend', '<br><h3>Rules:</h3>');
             div.insertAdjacentHTML('beforeend', `<p>Valid paypal account is required to redeem the winnings.</p>`);
+            div.insertAdjacentHTML('beforeend', `<p>Player has to fill out google form posted in monthly Steam News.</p>`);
             // div.insertAdjacentHTML('beforeend', `<p>Scoring may change during tournament, for now it's set to ranked by trending since month start.</p>`);
         }
     }
