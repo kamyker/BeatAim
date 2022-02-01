@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        var redirectToApp = function() {
+            var action = window.location.search.substr(1)
+            window.location.replace("beataim://" + action);
+        };
+        window.onload = redirectToApp;
+    </script>
+</head>
+<body></body>
+</html>
