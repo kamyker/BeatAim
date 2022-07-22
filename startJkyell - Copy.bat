@@ -1,0 +1,1 @@
+bash startJkyell.sh

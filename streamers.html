@@ -191,8 +191,7 @@
     //         [array[i], array[j]] = [array[j], array[i]];
     //     }
     // }
-    async function main()
-    {
+    async function main() {
         SetTimer();
 
         var div = document.createElement("div");
@@ -206,16 +205,13 @@
         // div.insertAdjacentHTML('beforeend', '<br><h4>Current tournament ends in:</h4>');
 
 
-
-
         div.insertAdjacentHTML('beforeend', '<br><br><br><a href="https://discord.gg/suKsKjfgyc" target="_blank" ><h4>Previous tournaments</h4></a>');
         // div.insertAdjacentHTML('beforeend', '<a href="tournamentsArchive/weekly1" >Weekly #1</a>');
 
         document.getElementsByClassName("content")[0].appendChild(div);
 
 
-        function SetTimer()
-        {
+        function SetTimer() {
             var countDownDate;
 
             var today = new Date();
@@ -247,12 +243,11 @@
             // var countDownDate = new Date("Mon 11, 2019 12:00:00").getTime();
 
             var timerElement = document.getElementById("timer");
-            if (timerElement)
-            {
+            if (timerElement) {
                 var x = setInterval(UpdateTime, 1000);
                 UpdateTime();
-                function UpdateTime()
-                {
+
+                function UpdateTime() {
                     var now = new Date().getTime();
                     var distance = countDownDate - now;
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -272,12 +267,10 @@
             }
         }
 
-        async function AddWinners(tList)
-        {
+        async function AddWinners(tList) {
             div.insertAdjacentHTML('beforeend', '<h3>Ranking:</h3>');
 
-            try
-            {
+            try {
                 htmlString += '<table class="expand hoverable" id="table-example"> \
             <thead>\
               <tr>\
@@ -290,8 +283,7 @@
             </thead>\
             <tbody>';
 
-                async function Dl()
-                {
+                async function Dl() {
                     var leagueSaved = {};
                     leagueSaved.Date = new Date();
 
@@ -326,11 +318,9 @@
                 document.getElementById("totalPrize").textContent = leagueSaved.Prizing.TotalPrize;
 
                 var data = d3.tsvParse(leagueSaved.Value);
-                for (let i = 0; i < data.length || i < leagueSaved.Prizing.Prizes.length; i++)
-                {
+                for (let i = 0; i < data.length || i < leagueSaved.Prizing.Prizes.length; i++) {
                     var place;
-                    switch (i)
-                    {
+                    switch (i) {
                         case 0:
                             place = "🥇";
                             break;
@@ -343,8 +333,8 @@
                         default:
                             place = i + 1;
                     }
-
-                    var watchTimeTotalMinutes = (data[i]?.Score || 0);
+                    console.log("score: " + data[i].score);
+                    var watchTimeTotalMinutes = (data[i]?.score || 0);
                     var watchTimeH = Math.floor(watchTimeTotalMinutes / 60);
                     var watchTimeM = watchTimeTotalMinutes % 60;
 
@@ -356,26 +346,23 @@
                     watchTimeText += `</td>`
                     console.log(leagueSaved);
                     htmlString += `<tr><td>${(place)}</td>` +
-                        `<td>${(data[i]?.Name || '-')}</td>` +
+                        `<td>${(data[i]?.name || '-')}</td>` +
                         watchTimeText +
                         `<td>${(leagueSaved?.Prizing.Prizes[i] || "")}</td>`;
 
-                    var country = data[i]?.Country;
-                    if (country)
-                    {
+                    var country = data[i]?.country;
+                    if (country) {
                         if (country == "us")
-                            htmlString += `<td><i class="em em-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`;
+                            htmlString += `<td><i class="em em-${data[i].country.toLowerCase()}" aria-role="presentation"></i></td></tr>`;
                         else if (country == "en")
                             htmlString += `<td><i class="em em-gb" aria-role="presentation"></i></td></tr>`;
                         else
-                            htmlString += `<td><i class="em em-flag-${data[i].Country.toLowerCase()}" aria-role="presentation"></i></td></tr>`;
-                    }
-                    else
+                            htmlString += `<td><i class="em em-flag-${data[i].country.toLowerCase()}" aria-role="presentation"></i></td></tr>`;
+                    } else
                         htmlString += `<td></td></tr>`;
                 }
 
-            } catch (error)
-            {
+            } catch (error) {
                 htmlString += 'error :(';
                 console.log(error)
             }
@@ -385,14 +372,14 @@
         }
 
 
-        function AddRules()
-        {
+        function AddRules() {
             div.insertAdjacentHTML('beforeend', '<br><h3>Rules:</h3>');
             div.insertAdjacentHTML('beforeend', `<p>Valid paypal account is required to redeem the winnings.</p>`);
             div.insertAdjacentHTML('beforeend', `<p>Player may be banned for unappropriated behavior including view bots, streaming other games when Beat Aim is selected as channel category etc.</p>`);
             div.insertAdjacentHTML('beforeend', `<p>Player has to fill out google form posted in monthly Steam News.</p>`);
         }
     }
+
     main();
 
 </script>

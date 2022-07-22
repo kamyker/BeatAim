@@ -193,6 +193,26 @@
     // }
     async function main()
     {
+        const settings = {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+        };
+        const fetchResponse = await fetch(`https://api2.beataim.com/Main/GetEvents`, settings);
+        const events = (await fetchResponse.json()).events;
+        
+        let date;
+        for(var i = 0; i < events.length; i++)
+        {
+            if(events[i].title == 'Streamers League Results')
+            {
+                date = events[i].date;
+                break;
+            }
+        }
+        console.log(date);
         SetTimer();
 
         var t = "U2FsdGVkX18n+Uz1uB97JU15Va5bZASl6kXVcIyD6S8oEx3ANg6ywsCcW10y0iDMp0VM1RIB2p7gHzGGW0m+9QYdpBZpuo4RTWcM0PAVypo=";
