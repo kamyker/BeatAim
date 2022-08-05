@@ -333,7 +333,7 @@
                         default:
                             place = i + 1;
                     }
-                    console.log("score: " + data[i].score);
+                    console.log("score: " + (data[i]?.score || 0));
                     var watchTimeTotalMinutes = (data[i]?.score || 0);
                     var watchTimeH = Math.floor(watchTimeTotalMinutes / 60);
                     var watchTimeM = watchTimeTotalMinutes % 60;
