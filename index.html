@@ -155,49 +155,105 @@
 </div>
 
     <div class="content">
+<script>
+    var options = {
+        project_id: "197298",
+        sku: "beataim-steam-keys",
+        item_type: "unit",
+        api_settings: {
+            sandbox: false,
+        },
+        widget_ui: {
+            target_element: "#xsolla-buy-button-widget",
+            theme: {
+                foreground: "red",
+                background: "dark"
+            }
+            , template: "simple"
+        },
+        payment_widget_ui: {
+            lightbox: {
+                // height: '100%',
+                spinner: 'round'
+            }
+        }
+    };
+    var s = document.createElement('script');
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://cdn.xsolla.net/embed/buy-button/3.1.7/widget.min.js";
+    s.addEventListener('load', function (e) {
+        var widgetInstance = XBuyButtonWidget.create(options);
+    }, false);
+    var head = document.getElementsByTagName('head')[0];
+    head.appendChild(s);
+</script>
+
 <div class="iframe-container">
     <iframe src="https://www.youtube.com/embed/_2UX9ymzGzM?autoplay=1" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-<div class="humblewidget-conteiner">
-    <iframe src="https://www.humblebundle.com/widget/v2/product/beataim_widget/MqcoxSycVm?theme=dark"
-        style="border: none;" scrolling="no" frameborder="0"></iframe>
-</div>
-<div class="humblewidget-conteiner" style="height: 190px;">
-    <iframe
-        src="https://store.steampowered.com/widget/1142220/?t=This%20Steam%20Early%20Access%20game%20is%20currently%20not%20a%20finished%20game%20and%20may%20or%20may%20not%20change%20significantly%20over%20the%20course%20of%20development.%20To%20learn%20more%20about%20Steam%20Early%20Access%2C%20please%20visit%20http%3A%2F%2Fstore.steampowered.com%2Fearlyaccessfaq%2F"
-        frameborder="0"></iframe></iframe>
-</div>
-<div class="row text-center">
+<br>
+<div class="row text-center grey-bg">
     <h1>Beat Aim</h1>
 </div>
-<div class="row text-center">
-    <h5>Available now on Windows</h5>
+
+<div class="row grey-bg">
+    <div class="two col">
+    </div>
+    <div class="text-center eight col ">
+        Rhythm aim trainer designed for FPS players with AI generated maps. Makes improving your aim incredibly fun
+        while listening to your favorite songs. Open any music and customize level generation. Combination of osu! and
+        KovaaK's trainer.
+
+    </div>
 </div>
 
-<div class="row has-bg text-center grey-bg">
-    <div class="four col">
-        <img src="imgs/crown.png" alt="vip">
-        <br><br>
-        <span>Includes 2 months VIP<br>
-            (10$ value)</span>
-    </div>
-    <div class="four col">
-        <img src="imgs/calendar.png" alt="calendar">
-        <br><br>
-        <span>Grants access to alpha, beta and<br>
-            all future releases</span>
-    </div>
-    <div class="four col">
-        <a href="https://discord.gg/2kW27Ez target=" _blank"">
-            <img src="imgs/discord.png" alt="discord" width="128px" height="128px">
-        </a>
-        <br><br>
-        <span>Priority support and founder<br>
-            role on <a href="https://discord.gg/2kW27Ez target=" _blank"">Discord</a></span>
-    </div>
+
+<div class="row text-center grey-bg" style="padding-bottom: 10px;">
+<div class="xsollaBA centerize">
+    <button id="xsolla-buy-button-widget" class="buttonXsolla"></button>
 </div>
+</div>
+<div class="row text-center grey-bg"  style="padding-bottom: 10px;" >
+    <h5>Available on Windows</h5>
+</div>
+<br>
+
+<!--<div class="humblewidget-conteiner">-->
+<!--    <iframe src="https://www.humblebundle.com/widget/v2/product/beataim_widget/MqcoxSycVm?theme=dark"-->
+<!--        style="border: none;" scrolling="no" frameborder="0"></iframe>-->
+<!--</div>-->
+<!--<div class="humblewidget-conteiner" style="height: 190px;">-->
+<!--    <iframe-->
+<!--        src="https://store.steampowered.com/widget/1142220/?t=This%20Steam%20Early%20Access%20game%20is%20currently%20not%20a%20finished%20game%20and%20may%20or%20may%20not%20change%20significantly%20over%20the%20course%20of%20development.%20To%20learn%20more%20about%20Steam%20Early%20Access%2C%20please%20visit%20http%3A%2F%2Fstore.steampowered.com%2Fearlyaccessfaq%2F"-->
+<!--        frameborder="0"></iframe></iframe>-->
+<!--</div>-->
+
+
+<!--<div class="row has-bg text-center grey-bg">-->
+<!--    <div class="four col">-->
+<!--        <img src="imgs/crown.png" alt="vip">-->
+<!--        <br><br>-->
+<!--        <span>Includes 2 months VIP<br>-->
+<!--            (10$ value)</span>-->
+<!--    </div>-->
+<!--    <div class="four col">-->
+<!--        <img src="imgs/calendar.png" alt="calendar">-->
+<!--        <br><br>-->
+<!--        <span>Grants access to alpha, beta and<br>-->
+<!--            all future releases</span>-->
+<!--    </div>-->
+<!--    <div class="four col">-->
+<!--        <a href="https://discord.gg/2kW27Ez target=" _blank"">-->
+<!--            <img src="imgs/discord.png" alt="discord" width="128px" height="128px">-->
+<!--        </a>-->
+<!--        <br><br>-->
+<!--        <span>Priority support and founder<br>-->
+<!--            role on <a href="https://discord.gg/2kW27Ez target=" _blank"">Discord</a></span>-->
+<!--    </div>-->
+<!--</div>-->
 
 <div class="row centerize">
     <div class="eight col no-padding ">
@@ -206,19 +262,20 @@
     <div class="four col no-padding ">
         <div class="iframe-container-discord">
             <iframe src="https://discordapp.com/widget?id=328527053634928651&theme=dark" allowtransparency="true"
-                frameborder="0"></iframe>
+                    frameborder="0"></iframe>
         </div>
     </div>
 </div>
 
-<div class="row centerize text-center grey-bg">
+<div class="row centerize text-center grey-bg" >
     <div class="twelve outer">
         <div class="three col">
             <img class="responsive" src="imgs/kamyker.jpg" alt="beataim">
             <br>
             <p class="smaller-text">Developed by just one <a href="https://twitter.com/kamyker">gamer</a></p>
         </div>
-        <div class="nine col inner_remaining" style="margin: auto;">
+        <div class="nine col inner_remaining" style="margin: auto; font-size: 0.80em;">
+            <h4>Rhythm FPS Shooter</h4>
             <p>
                 As an esports player I've been looking for a way to get my aiming skills to the highest levels.<br>
                 FPS trainers like Kovaak's are pretty good but quickly become boring.<br>
@@ -234,7 +291,7 @@
 </div>
 
 
-<div class="row text-center">
+<div class="row text-center" style="padding-bottom: 10px;">
     <div class="three col feature-block" style="font-size: 36px">
         <p class="cinzel">
             <span style="line-height: 0;">osu<br>
@@ -267,6 +324,12 @@
             instead of monthly like big companies</p>
     </div>
 </div>
+<div class="row text-center" style="width: 100%; height: 650px; overflow: hidden;">
+    <iframe style="width: 100%; height: 100%;     position: relative;
+    top: -100px;" src="https://beat-aim-rhythm-fps-shooter-duplicate.xsollasitebuilder.com/"
+            style="border: none;" scrolling="no" frameborder="0"></iframe>
+</div>
+
 <!-- <div class="iframe-container-discord">
   <iframe src="https://discordapp.com/widget?id=328527053634928651&theme=dark" allowtransparency="true" width="350"
     frameborder="0"></iframe>
