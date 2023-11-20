@@ -225,6 +225,13 @@ div.share-links i.fa {
     border-radius: 50%;
   }
 
+  .krislihl {
+    content: url(/imgs/partners/krislihl.jpg);
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+  }
+
 .steamwidget-conteiner{
   height: 190px;
 }
